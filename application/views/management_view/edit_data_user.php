@@ -132,6 +132,7 @@
 <?php $this->load->view('modal.html'); ?>
 <script type="text/javascript">
     $(document).ready(function () {
+        
         $('#save').click(function () {
             var user_prefix    = $('#user_prefix').val();
             var user_name      = $('#user_name').val().trim();
