@@ -36,40 +36,40 @@
 
         <!-- Paging -->
         <script src="<?php echo base_url(); ?>js/tablepagegin.js"></script>
-        
-        
-        
-        
+
+
+
+
 
 
     </head>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("#logo").css('opacity', '0');
-            $("#select_logo").click(function (e) {
+            $("#select_logo").click(function(e) {
                 e.preventDefault();
                 $("#logo").trigger('click');
-                
-        /*$.ajax({
-                    url: "<?php echo base_url(); ?>index.php/register/register/change_picture",
-                    type: 'POST',
-                    cache: false,
-                    dataType: "json",
-                    data: {
-                        //user_id: $("#user_id").val()
-                    },
-                    success: function (data) {
-                        $('#message').html(data);
-                        $('#myModal').modal('show');
-                        //$("#user_id").focus();
-                        //$('#user_id').val('');
 
-                    },
-                    error: function (data) {
-                        //alert("Error");
-                    }
-                });*/
+                /*$.ajax({
+                 url: "<?php echo base_url(); ?>index.php/register/register/change_picture",
+                 type: 'POST',
+                 cache: false,
+                 dataType: "json",
+                 data: {
+                 //user_id: $("#user_id").val()
+                 },
+                 success: function (data) {
+                 $('#message').html(data);
+                 $('#myModal').modal('show');
+                 //$("#user_id").focus();
+                 //$('#user_id').val('');
+                 
+                 },
+                 error: function (data) {
+                 //alert("Error");
+                 }
+                 });*/
             });
         });
     </script>
@@ -166,7 +166,11 @@
                         <li>
                         <center>
                             <div class = "manager">
-                                <img id="imgmenu-hover" class="border-img" width="150px" height="150px" src="picture/pic_user/<?php echo  $this->session->userdata('picture_user'); ?>"alt=""><br>
+                                <?php if ($this->session->userdata('user_factory') == "admin") { ?>
+                                    <img id="imgmenu-hover" class="border-img" width="150px" height="150px" src="picture/pic_user/<?php echo $this->session->userdata('picture_user'); ?>"alt=""><br>
+                                <?php } else { ?>
+                                    <img id="imgmenu-hover" class="border-img" width="150px" height="150px" src="picture/pic_user/<?php echo $this->session->userdata('picture_user'); ?>"alt=""><br>
+                                <?php } ?>
 
                                 <center>
                                     <h4><?php echo $this->session->userdata('name'); ?></h4>

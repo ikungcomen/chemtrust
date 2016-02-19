@@ -69,14 +69,9 @@ class editPassword_controller extends CI_Controller{
             $upload_data = $this->upload->data();
             $filename = $upload_data['file_name'];
         }
-        
-        if (trim($filename) == "") {
-            $filename = $this->session->userdata('picture_user');
-        }
         $result_update_user = $this->tb_user->update_user($user_prefix, $user_name, $user_last_name, $user_email, $user_tel, $user_address, $user_fax, $user_role,$filename, $user_id, $date);
         if ($result_update_user > 0) {
             $this->session->set_userdata('message_save', 'true');
-            $this->session->set_userdata('picture_user', $filename);
         } else {
             $this->session->set_userdata('message_save', 'false');
         }

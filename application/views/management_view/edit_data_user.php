@@ -10,38 +10,45 @@
 
             <hr width="100%">
             <br><br>
+            <?php
+            $user_prefix = "";
+            $user_name = "";
+            $user_last_name = "";
+            $user_tel = "";
+            $user_fax = "";
+            $user_factory = "";
+            $user_address = "";
+            $user_role = "";
+            $user_id = "";
+
+            foreach ($user as $row) {
+                $user_id = $row['user_id'];
+                $user_prefix = $row['user_prefix'];
+                $user_name = $row['user_name'];
+                $user_last_name = $row['user_last_name'];
+                $user_tel = $row['user_tel'];
+                $user_fax = $row['user_fax'];
+                $user_email = $row['user_email'];
+                $user_factory = $row['user_factory'];
+                $user_address = $row['user_address'];
+                $user_role = $row['user_role'];
+            }
+            ?>
+            <center>
+                <div class="profile-userpic">
+                <img src="picture/pic_user/<?php echo $user_factory; ?>">
+            </div>
+            </center>
+            <hr width="20%">
             <div class="panel-body form-horizontal payment-form">
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">แก้ไขข้อมูลเรียบร้อย</div>
                 <?php } ?>
-                    
-                    <?php
-                        $user_prefix = "";
-                        $user_name = "";
-                        $user_last_name = "";
-                        $user_tel = "";
-                        $user_fax = "";
-                        $user_factory = "";
-                        $user_address = "";
-                        $user_role = "";
-                        $user_id = "";
 
-                        foreach ($user as $row) {
-                            $user_id        =  $row['user_id']; 
-                            $user_prefix    = $row['user_prefix'];
-                            $user_name      = $row['user_name'];
-                            $user_last_name = $row['user_last_name'];
-                            $user_tel       = $row['user_tel'];
-                            $user_fax       = $row['user_fax'];
-                            $user_email     = $row['user_email'];
-                            $user_factory   = $row['user_factory'];
-                            $user_address   = $row['user_address'];
-                            $user_role      = $row['user_role'];
-                        }
-                        ?>
-                    <form id="edit_user" method="post" action="<?php echo  base_url(); ?>index.php/management_controller/editPassword_controller/update_user/<?php echo $user_id; ?>"  enctype="multipart/form-data">
+
+                <form id="edit_user" method="post" action="<?php echo base_url(); ?>index.php/management_controller/editPassword_controller/update_user/<?php echo $user_id; ?>"  enctype="multipart/form-data">
                     <fieldset>  
-                        
+
                         <div class="form-group">
 
                             <label  class="col-sm-2 control-label">คำนำหน้า :</label>
@@ -92,7 +99,7 @@
                             </div>
                             <label  class="col-sm-2 control-label">รูปประจำตัว :</label>
                             <div class="col-sm-4">
-                                <label  class="col-sm-2 control-label"><?php echo $user_factory;?></label>
+                                <label  class="col-sm-2 control-label"><?php echo $user_factory; ?></label>
                                 <input id="picture" name="picture" type="file" placeholder="รูปประจำตัว " class="form-control">
                             </div>
 
@@ -106,13 +113,13 @@
                             <label  class="col-sm-2 control-label">สิทธิ์การใช้งาน :</label>
                             <div class="col-sm-4">
                                 <select class="form-control request" id="user_role" name="user_role">
-                                    <?php if($user_role == "admin"){?>
-                                    <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
-                                    <option value="user">user</option>
-                                    <?php }else if($user_role == "user"){?>
-                                    <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
-                                    <option value="admin">admin</option>
-                                    <?php }?>
+                                    <?php if ($user_role == "admin") { ?>
+                                        <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
+                                        <option value="user">user</option>
+                                    <?php } else if ($user_role == "user") { ?>
+                                        <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
+                                        <option value="admin">admin</option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -131,15 +138,15 @@
 </div>
 <?php $this->load->view('modal.html'); ?>
 <script type="text/javascript">
-    $(document).ready(function () {
-        
-        $('#save').click(function () {
-            var user_prefix    = $('#user_prefix').val();
-            var user_name      = $('#user_name').val().trim();
+    $(document).ready(function() {
+
+        $('#save').click(function() {
+            var user_prefix = $('#user_prefix').val();
+            var user_name = $('#user_name').val().trim();
             var user_last_name = $('#user_last_name').val().trim();
-            var user_tel       = $('#user_tel').val().trim();
-            var user_role      = $('#user_role').val().trim();
-            
+            var user_tel = $('#user_tel').val().trim();
+            var user_role = $('#user_role').val().trim();
+
             if (user_prefix == "") {
                 $('#message').html('กรุณาระบุ คำนำหน้า');
                 $('#myModal').modal('show');
@@ -155,15 +162,15 @@
             } else if (user_role == "") {
                 $('#message').html('กรุณาระบุ สิทธิ์การใช้งาน');
                 $('#myModal').modal('show');
-            }else {
+            } else {
                 $("#edit_user").submit();
             }
         });
-        window.setTimeout(function () {
+        window.setTimeout(function() {
             $("#alert-message").alert('close');
-            <?php $this->session->unset_userdata('message_save'); ?>
+<?php $this->session->unset_userdata('message_save'); ?>
         }, 2000);
-        
+
 
     });
 </script>

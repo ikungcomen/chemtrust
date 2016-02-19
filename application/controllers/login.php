@@ -36,7 +36,7 @@ class login extends CI_Controller {
             $user_last_name = $row->user_last_name;
             $user_role      = $row->user_role;
             $user_id        = $row->user_id;
-            $user_pass        = $row->user_pass;
+            $user_pass      = $row->user_pass;
             $user_factory   = $row->user_factory;
             
         }

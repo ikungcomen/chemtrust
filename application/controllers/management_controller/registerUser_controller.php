@@ -49,13 +49,13 @@ class registerUser_controller extends CI_Controller {
             $upload_data = $this->upload->data();
             $filename = $upload_data['file_name'];
         }
-        if (trim($filename) == "") {
-            $filename = $this->session->userdata('picture_user');
-        }
+        //if (trim($filename) == "") {
+            //$filename = $this->session->userdata('picture_user');
+        //}
         $result_insert = $this->tb_user->insert_user($user_prefix, $user_name, $user_last_name, $user_email, $user_tel, $user_address, $user_fax, $user_role, $user_id, $user_pass, $filename, $user, $date);
         if ($result_insert) {
             $this->session->set_userdata('message_save', 'true');
-            $this->session->set_userdata('picture_user', $filename);
+            //$this->session->set_userdata('picture_user', $filename);
         } else {
             $this->session->set_userdata('message_save', 'false');
         }
