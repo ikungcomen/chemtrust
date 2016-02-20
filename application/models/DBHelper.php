@@ -93,7 +93,7 @@ class DBhelper extends CI_Model {
         
     }
      public function get_chem_classify($chem_no){
-        
+        //xxxx
     }
 
 }
