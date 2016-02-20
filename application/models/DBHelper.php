@@ -31,19 +31,66 @@ class DBhelper extends CI_Model {
             return 0;
         }
     }
-    
-    public function getTb_chem_info(){
+
+    public function getTb_chem_info() {
         $sql = "select 	chem_name_th  from tb_chem_info ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
     }
-    
-    public  function tb_msm_master(){
+
+    public function tb_msm_master() {
         $sql = "select 	*  from tb_msm_master ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
+    }
+
+    public function search_chem_no_auto($chem_no) {
+        $sql = "select 	*  from tb_chem_info where chem_no like '%" . $chem_no . "%'";
+        $result = $this->db->query($sql);
+        $result = $result->result_array();
+        return $result;
+    }
+
+    public function search_chem_name_auto($chem_name) {
+        $sql = "select 	*  from tb_chem_info where chem_name_th like '%$chem_name%'";
+        $result = $this->db->query($sql);
+        $result = $result->result_array();
+        return $result;
+    }
+
+    public function search_chem($chem_no, $chem_name) {
+        $sqlWhere = "";
+        if (trim($chem_no) != "") {
+            $sqlWhere = $sqlWhere . " chem_no = '$chem_no'";
+        }
+        if (trim($chem_name) != "") {
+            if ($sqlWhere != "") {
+                $sqlWhere = $sqlWhere . " and ";
+            }
+            $sqlWhere = $sqlWhere . " chem_name_th = '$chem_name'";
+        }
+        if ($sqlWhere != "") {
+            $sqlWhere = "where " . $sqlWhere;
+        }
+        $sql = "select 	*  from tb_chem_info " . $sqlWhere;
+        $result = $this->db->query($sql);
+        $result = $result->result_array();
+        return $result;
+    }
+    public function delete_chem($chem_no){
+        $this->db->where('chem_no', $chem_no);
+        $this->db->delete('tb_chem_info');
+        if ($this->db->affected_rows() > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    public function detai_chem($chem_no){
+        
     }
 
 }

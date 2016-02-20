@@ -22,7 +22,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/search_cemee" class="btn btn-sq-lg btn-success">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/show_search_cemee" class="btn btn-sq-lg btn-success">
                             <br/>
                             <span class="glyphicon glyphicon-search fa-4x" aria-hidden="true"></span>
                             <br/><br/>
