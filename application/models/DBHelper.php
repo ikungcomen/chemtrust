@@ -33,7 +33,7 @@ class DBhelper extends CI_Model {
     }
 
     public function getTb_chem_info() {
-        $sql = "select 	chem_name_th  from tb_chem_info ";
+        $sql = "select 	chem_no,chem_name_th  from tb_chem_info ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;

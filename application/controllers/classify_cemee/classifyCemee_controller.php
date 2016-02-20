@@ -16,5 +16,11 @@ class classifyCemee_controller extends CI_Controller {
 		$this->load->view('classify_cemee/classify_cemee');
 		$this->load->view('include/footer');
 	}
+        public function search_classify(){
+		$this->load->view('include/header');
+		$this->load->view('classify_cemee/classify_cemee');
+		$this->load->view('include/footer');
+	}
+        
 }
 ?>
