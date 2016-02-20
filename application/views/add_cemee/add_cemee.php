@@ -167,7 +167,6 @@
                     url: "<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/getTb_chem_info",
                     type: 'POST',
                     cache: false,
-                    //dataType: "json",
                     data: {
                         chem_no: $("#chem_no").val()
                     },
