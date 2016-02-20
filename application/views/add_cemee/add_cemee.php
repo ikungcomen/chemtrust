@@ -167,27 +167,21 @@
                     url: "<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/getTb_chem_info",
                     type: 'POST',
                     cache: false,
-                    dataType: "json",
+                    //dataType: "json",
                     data: {
-                        cemee_code: $("#cemee_code").val()
+                        chem_no: $("#chem_no").val()
                     },
                     success: function (data) {
-                        response($.map(data, function (list) {
-                            return {
-                                value: list.chem_name_th
-                            };
-                        }));
-                    },
-                    error: function (data) {
-                        alert("Error");
+                        if(data == '1'){
+                            $('#message').html('ข้อมูลรหัสสารเคมี '+$("#chem_no").val()+' มีอยู่แล้วในระบบ');
+                            $('#myModal').modal('show');
+                            $('#chem_no').val('');
+                            
+                        }
                     }
                 });
             },
-            minLength: 3,
-            select: function (event, ui) {
-                $("#chem_no").val(ui.item.value);
-                return false;
-            }
+            minLength: 1
         });
     });
 

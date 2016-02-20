@@ -32,11 +32,14 @@ class DBhelper extends CI_Model {
         }
     }
 
-    public function getTb_chem_info() {
-        $sql = "select 	chem_no,chem_name_th  from tb_chem_info ";
+    public function getTb_chem_info($chem_no) {
+        $sql = "select 	chem_no,chem_name_th  from tb_chem_info  where chem_no = ".$chem_no;
         $result = $this->db->query($sql);
-        $result = $result->result_array();
-        return $result;
+        if ($result->num_rows() > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public function tb_msm_master() {
