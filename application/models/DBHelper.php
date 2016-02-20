@@ -92,6 +92,9 @@ class DBhelper extends CI_Model {
     public function detai_chem($chem_no){
         
     }
+     public function get_chem_classify($chem_no){
+        
+    }
 
 }
 
