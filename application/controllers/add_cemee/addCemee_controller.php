@@ -14,7 +14,7 @@ class addCemee_controller extends CI_Controller {
     }
 
     public function add_cemee() {
-        $result['msm_master'] = $this->DBhelper->tb_msm_master();
+        $result['msm_master'] = $this->DBhelper->tb_msm_master('');
         $this->load->view('include/header');
         $this->load->view('add_cemee/add_cemee', $result);
         $this->load->view('include/footer');

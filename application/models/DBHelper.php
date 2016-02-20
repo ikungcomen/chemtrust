@@ -42,8 +42,12 @@ class DBhelper extends CI_Model {
         }
     }
 
-    public function tb_msm_master() {
-        $sql = "select 	*  from tb_msm_master ";
+    public function tb_msm_master($value) {
+        $sqlWhere = "";
+        if(trim($value) != ""){
+            $sqlWhere = $sqlWhere." where chem_msm_name != '".$value."'";
+        }
+        $sql = "select 	*  from tb_msm_master ".$sqlWhere;
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -93,7 +97,24 @@ class DBhelper extends CI_Model {
     }
     
     public function detai_chem($chem_no){
-        
+        $sql = "";
+        $sql = " select chem_no as chem_no	"  ;
+        $sql = $sql."   ,chem_cas_number as chem_cas_number";
+        $sql = $sql."   ,chem_seq as chem_seq ";
+        $sql = $sql."   ,chem_name_th as chem_name_th ";
+        $sql = $sql."   ,chem_name_en as chem_name_en ";
+        $sql = $sql."   ,chem_type as chem_type";
+        $sql = $sql."   ,chem_location as chem_location ";
+        $sql = $sql."   ,chem_qty_in as chem_qty_in ";
+        $sql = $sql."   ,chem_qty_in_msm as chem_qty_in_msm ";
+        $sql = $sql."   ,chem_qty_boh as chem_qty_boh ";
+        $sql = $sql."   ,chem_qty_boh_msm as chem_qty_boh_msm ";
+        $sql = $sql."   ,update_userid as update_userid ";
+        $sql = $sql."   ,DATE_FORMAT(update_date,'%d/%m/%Y') as update_date";
+        $sql = $sql." from tb_chem_info where chem_no = ".$chem_no;
+        $result = $this->db->query($sql);
+        $result = $result->result_array();
+        return $result;
     }
      public function get_chem_classify($chem_no){
         //xxxx
