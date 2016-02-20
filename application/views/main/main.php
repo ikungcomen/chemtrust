@@ -30,7 +30,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/decomposition_cemee/deComposition_controller/decomposition_cemee" class="btn btn-sq-lg btn-info">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/classify_cemee/classifyCemee_controller/classify_cemee" class="btn btn-sq-lg btn-info">
                             <br/> 
                             <span class="glyphicon glyphicon-edit fa-4x" aria-hidden="true"></span>
                             <br/><br/>
