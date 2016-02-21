@@ -10,6 +10,8 @@ class searchCemee_controller extends CI_Controller {
         $this->load->database();
         $this->load->model('DBhelper');
         $this->load->model('tb_chem_info');
+        $this->load->model('tb_chem_store');
+        $this->load->model('tb_chem_warehouse');
         if ($this->session->userdata('loginuser') < 1) {
             redirect('login', 'refresh');
         }
@@ -58,11 +60,15 @@ class searchCemee_controller extends CI_Controller {
         $this->load->view('include/footer');
     }
     public function edit_chem($chem_no){
-        $result['chem_info']  =  $this->DBhelper->detai_chem($chem_no);
-        $chem_qty_in_msm      = $result['chem_info'][0]['chem_qty_in_msm'];
-        $chem_qty_boh_msm     = $result['chem_info'][0]['chem_qty_boh_msm'];
-        $result['msm_master_in'] =  $this->DBhelper->tb_msm_master($chem_qty_in_msm);
-        $result['msm_master_out'] =  $this->DBhelper->tb_msm_master($chem_qty_boh_msm);
+        $result['chem_info']      =  $this->DBhelper->detai_chem($chem_no);
+        //$chem_qty_in_msm          = $result['chem_info'][0]['chem_qty_in_msm'];
+        //$chem_qty_boh_msm         = $result['chem_info'][0]['chem_qty_boh_msm'];
+        $result['msm_master_in']  =  $this->DBhelper->tb_msm_master();
+        $result['msm_master_out'] =  $this->DBhelper->tb_msm_master();
+        $chem_type = $result['chem_info'][0]['chem_type'];
+        $result['chem_type']      =  $this->tb_chem_store->chem_type($chem_type);
+        $result['chem_warehouse']      =  $this->tb_chem_warehouse->chem_warehouse('');
+        
         $this->load->view('include/header');
         $this->load->view('search_cemee/edit_chem',$result);
         $this->load->view('include/footer');

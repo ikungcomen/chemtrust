@@ -32,13 +32,18 @@
                             <div class="col-sm-4">
                                 <input class="form-control " type="number"  id="chem_seq" name="chem_seq"  placeholder="ลำดับในบัญชี">
                             </div>
-                            <label  class="col-sm-2 control-label">ประเถทสารเคมี :</label>
+                            <label  class="col-sm-2 control-label">ประเภทสารเคมี :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="text"  id="chem_type" name="chem_type" placeholder="ประเถทสารเคมี">
+                                <select class="form-control" id="chem_type" name="chem_type">
+                                    <option value="">-- ประเภทสารเคมี --</option>
+                                    <?php foreach ($chem_type as $row) { ?>
+                                        <option value="<?php echo $row['chem_store_type']; ?>"><?php echo $row['chem_store_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                
+                                
                             </div>
                         </div>
-
-
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">ชื่อสารเคมีภาษาไทย :</label>
                             <div class="col-sm-4">
@@ -51,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">จำนวนนำเข้า :</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <input class="form-control " type="number"  id="chem_qty_in" name="chem_qty_in" placeholder="จำนวนนำเข้า">
                             </div>
                             <label  class="col-sm-2 control-label">หน่วยนำเข้า :</label>
@@ -59,15 +64,18 @@
                                 <select class="form-control" id="chem_qty_in_msm" name="chem_qty_in_msm">
                                     <option value="">-- หน่วยนำเข้า --</option>
                                     <?php foreach ($msm_master as $row) { ?>
-                                        <option value="<?php echo $row['chem_msm_name']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
 
                             </div>
+                            <div class="col-sm-1">
+                                    <a class="btn btn-primary" href="<?php base_url();?>index.php/msmmaster_controller/msmMaster_controller/chem_warehouse"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
+                                </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">จำนวนคงเหลือ :</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <input class="form-control " type="number"  id="chem_qty_boh" name="chem_qty_boh" placeholder="จำนวนคงเหลือ">
                             </div>
                             <label  class="col-sm-2 control-label">หน่วยคงเหลือ :</label>
@@ -75,19 +83,26 @@
                                 <select class="form-control" id="chem_qty_boh_msm" name="chem_qty_boh_msm">
                                     <option value="">-- หน่วยคงเหลือ --</option>
                                     <?php foreach ($msm_master as $row) { ?>
-                                        
-                                        <option value="<?php echo $row['chem_msm_name']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
-                            </div>
+                           </div>
+                            <div class="col-sm-1">
+                                    <a class="btn btn-primary" href="<?php base_url();?>index.php/msmmaster_controller/msmMaster_controller/chem_warehouse"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
+                                </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">สถานที่จัดเก็บ :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="text"  id="chem_location" name="chem_location" maxlength="50" placeholder="สถานที่จัดเก็บ">
+                                <select class="form-control" id="chem_location" name="chem_location">
+                                    <option value="">-- สถานที่จัดเก็บ --</option>
+                                    <?php foreach ($chem_warehouse as $row) { ?>
+                                        <option value="<?php echo $row['chem_warehouse_code']; ?>"><?php echo $row['chem_warehouse_name']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <div class="col-sm-4">
-
+                            <div class="col-sm-4 text-left">
+                                <a class="btn btn-primary" href="<?php base_url();?>index.php/chem_warehouse/chemwarehouse_controller/chem_warehouse"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
                             </div>
                         </div>
                         <div class="form-group text-right">

@@ -17,7 +17,7 @@
             </div>
             <br>
             <div class="panel-body form-horizontal payment-form">
-                
+
                 <form id="update_cemee" method="post" action="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/update_chem">
                     <fieldset>  
                         <div class="form-group">
@@ -36,9 +36,13 @@
                             <div class="col-sm-4">
                                 <input class="form-control " type="number"  id="chem_seq" name="chem_seq"  value="<?php echo $chem_info[0]['chem_seq']; ?>" placeholder="ลำดับในบัญชี">
                             </div>
-                            <label  class="col-sm-2 control-label">ประเถทสารเคมี :</label>
+                            <label  class="col-sm-2 control-label">ประเภทสารเคมี :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="text"  id="chem_type" name="chem_type"  value="<?php echo $chem_info[0]['chem_type']; ?>" placeholder="ประเถทสารเคมี">
+                                <select class="form-control" id="chem_type" name="chem_type" value="<?php echo $chem_info[0]['chem_type']; ?>">
+                                    <?php foreach ($chem_type as $row) { ?>
+                                        <option value="<?php echo $row['chem_store_type']; ?>"><?php echo $row['chem_store_name']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -58,10 +62,9 @@
                             </div>
                             <label  class="col-sm-2 control-label">หน่วยนำเข้า :</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="chem_qty_in_msm" name="chem_qty_in_msm">
-                                    <option value="<?php echo $chem_info[0]['chem_qty_in_msm']; ?>"><?php echo $chem_info[0]['chem_qty_in_msm']; ?></option>
+                                <select class="form-control" id="chem_qty_in_msm" name="chem_qty_in_msm" value="<?php echo $chem_info[0]['chem_qty_in_msm']; ?>">
                                     <?php foreach ($msm_master_in as $row) { ?>
-                                        <option value="<?php echo $row['chem_msm_name']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
 
@@ -74,10 +77,9 @@
                             </div>
                             <label  class="col-sm-2 control-label">หน่วยคงเหลือ :</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="chem_qty_boh_msm" name="chem_qty_boh_msm">
-                                    <option value="<?php echo $chem_info[0]['chem_qty_boh_msm']; ?>"><?php echo $chem_info[0]['chem_qty_boh_msm']; ?></option>
+                                <select class="form-control" id="chem_qty_boh_msm" name="chem_qty_boh_msm" value="<?php echo $chem_info[0]['chem_qty_boh_msm']; ?>">
                                     <?php foreach ($msm_master_out as $row) { ?>
-                                        <option value="<?php echo $row['chem_msm_name']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -85,7 +87,14 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">สถานที่จัดเก็บ :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="text"  id="chem_location" name="chem_location"  value="<?php echo $chem_info[0]['chem_location']; ?>" maxlength="50" placeholder="สถานที่จัดเก็บ">
+                                
+                                    <select class="form-control" id="chem_location" name="chem_location">
+                                        <?php foreach ($chem_warehouse as $row) { ?>
+                                            <option value="<?php echo $row['chem_warehouse_code']; ?>"><?php echo $row['chem_warehouse_name']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                
+
                             </div>
                             <div class="col-sm-4">
 
@@ -158,29 +167,29 @@
                 $("#update_cemee").submit();
             }
         });
-        
-        /*
-        $("#chem_no").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: "<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/getTb_chem_info",
-                    type: 'POST',
-                    cache: false,
-                    data: {
-                        chem_no: $("#chem_no").val()
-                    },
-                    success: function (data) {
-                        if (data == '1') {
-                            $('#message').html('ข้อมูลรหัสสารเคมี ' + $("#chem_no").val() + ' มีอยู่แล้วในระบบ');
-                            $('#myModal').modal('show');
-                            $('#chem_no').val('');
 
-                        }
-                    }
-                });
-            },
-            minLength: 1
-        });*/
+        /*
+         $("#chem_no").autocomplete({
+         source: function (request, response) {
+         $.ajax({
+         url: "<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/getTb_chem_info",
+         type: 'POST',
+         cache: false,
+         data: {
+         chem_no: $("#chem_no").val()
+         },
+         success: function (data) {
+         if (data == '1') {
+         $('#message').html('ข้อมูลรหัสสารเคมี ' + $("#chem_no").val() + ' มีอยู่แล้วในระบบ');
+         $('#myModal').modal('show');
+         $('#chem_no').val('');
+         
+         }
+         }
+         });
+         },
+         minLength: 1
+         });*/
     });
 
 </script>

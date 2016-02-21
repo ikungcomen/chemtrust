@@ -8,42 +8,24 @@
                 <h4 class="font-title"><b>แก้ไขรหัสผ่าน</b></h4>
             </div>
             <hr width="100%">
-            <br><br>
+            <br>
             <div class="panel-body form-horizontal payment-form">
-                <?php
-                $user_prefix = "";
-                $user_name = "";
-                $user_last_name = "";
-                $user_role = "";
-                $user_email = "";
-                $user_tel = "";
-
-
-                foreach ($user as $row) {
-                    ?>
-                    <?php $user_prefix = $row['user_prefix']; ?>
-                    <?php $user_name = $row['user_name']; ?>
-                    <?php $user_last_name = $row['user_last_name']; ?>
-                    <?php $user_role = $row['user_role']; ?>
-                    <?php $user_email = $row['user_email']; ?>
-                    <?php $user_tel = $row['user_tel']; ?>
-                <?php } ?>
-                <a class="btn btn-info" href="<?php base_url(); ?>index.php/management_controller/editPassword_controller/select_user/<?php echo $this->session->userdata('user_id'); ?>"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> แก้ไขข้อมูลส่วนตัว</span></a><br><br><br><br>
+                <a class="btn btn-info" href="<?php base_url(); ?>index.php/management_controller/editPassword_controller/select_user/<?php echo $this->session->userdata('user_id'); ?>"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> แก้ไขข้อมูลส่วนตัว</span></a><br><hr><br>
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">แก้ไขรหัสผ่านเรียบร้อย</div>
                 <?php }?>
                 <div class="form-group">
                     <label  class="col-sm-2 text-right">ชื่อ - นามสกุล : </label>
-                    <label  class="col-sm-4"><?php echo $user_prefix . " " . $user_name . " " . $user_last_name; ?></label>
+                    <label  class="col-sm-4"><?php echo $user[0]['user_prefix'] . " " . $user[0]['user_name'] . " " . $user[0]['user_last_name']; ?></label>
                     <label  class="col-sm-2 text-right">สิทธิ์การใช้งาน : </label>
-                    <label  class="col-sm-4"><?php echo $user_role; ?></label>
+                    <label  class="col-sm-4"><?php echo $user[0]['user_role']; ?></label>
 
                 </div>
                 <div class="form-group">
                     <label  class="col-sm-2 text-right">อีเมล์ : </label>
-                    <label  class="col-sm-4"><?php echo $user_email; ?></label>
+                    <label  class="col-sm-4"><?php echo $user[0]['user_email']; ?></label>
                     <label  class="col-sm-2 text-right">เบอร์ที่ติดต่อได้ : </label>
-                    <label  class="col-sm-4"><?php echo $user_tel; ?></label>
+                    <label  class="col-sm-4"><?php echo $user[0]['user_tel']; ?></label>
 
                 </div>
                 <br><br>

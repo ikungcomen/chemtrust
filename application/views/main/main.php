@@ -38,7 +38,7 @@
                         </a>
                     </p>
                     <p>
-                        <a id="imgmenu-hover" href="#" class="btn btn-sq-lg btn-warning">
+                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-warning">
                             <br/>
                             <span class="glyphicon glyphicon-folder-close fa-4x" aria-hidden="true"></span>
                             <br/><br/>
@@ -46,7 +46,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="#" class="btn btn-sq-lg btn-danger">
+                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-danger">
                             <br/>
                             <span class="glyphicon glyphicon-globe fa-4x" aria-hidden="true"></span>
                             <br/></i><br/>
@@ -54,7 +54,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="#" class="btn btn-sq-lg btn-primary">
+                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-primary">
                             <br/>
                             <span class="glyphicon glyphicon-ok-circle fa-4x" aria-hidden="true"></span>
                             <br/><br/>
@@ -62,7 +62,7 @@
                         </a>
                     </p>
                     <p>
-                        <a id="imgmenu-hover" href="#" class="btn btn-sq-lg btn-success">
+                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-success">
                             <br/>
                             <span class="glyphicon glyphicon-print fa-4x" aria-hidden="true"></span>
                             <br/><br/>
@@ -70,7 +70,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="#" class="btn btn-sq-lg btn-info">
+                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-info">
                             <br/>
                             <span class="glyphicon glyphicon-remove-sign fa-4x" aria-hidden="true"></span>
                             <br/><br/>

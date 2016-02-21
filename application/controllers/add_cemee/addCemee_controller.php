@@ -8,13 +8,16 @@ class addCemee_controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('DBhelper');
+        $this->load->model('tb_chem_store');
+        $this->load->model('tb_chem_warehouse');
         if ($this->session->userdata('loginuser') < 1) {
             redirect('login', 'refresh');
         }
     }
-
     public function add_cemee() {
-        $result['msm_master'] = $this->DBhelper->tb_msm_master('');
+        $result['msm_master']     = $this->DBhelper->tb_msm_master();
+        $result['chem_type']      = $this->tb_chem_store->chem_type('');
+        $result['chem_warehouse'] = $this->tb_chem_warehouse->chem_warehouse('');
         $this->load->view('include/header');
         $this->load->view('add_cemee/add_cemee', $result);
         $this->load->view('include/footer');
@@ -35,7 +38,6 @@ class addCemee_controller extends CI_Controller {
         $chem_location = $this->input->post('chem_location');
         $user_id = $this->session->userdata('user_id');
         $date = date('y-m-d');
-
         $result_insert = $this->DBhelper->insert_cemee($chem_no, $chem_cas_number, $chem_seq, $chem_type, $chem_name_th, $chem_name_en, $chem_qty_in, $chem_qty_in_msm, $chem_qty_boh, $chem_qty_boh_msm, $chem_location, $user_id, $date);
         if ($result_insert) {
             $this->session->set_userdata('message_save', 'true');

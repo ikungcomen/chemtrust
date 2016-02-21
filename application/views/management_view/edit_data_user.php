@@ -10,33 +10,10 @@
 
             <hr width="100%">
             <br><br>
-            <?php
-            $user_prefix = "";
-            $user_name = "";
-            $user_last_name = "";
-            $user_tel = "";
-            $user_fax = "";
-            $user_factory = "";
-            $user_address = "";
-            $user_role = "";
-            $user_id = "";
-
-            foreach ($user as $row) {
-                $user_id = $row['user_id'];
-                $user_prefix = $row['user_prefix'];
-                $user_name = $row['user_name'];
-                $user_last_name = $row['user_last_name'];
-                $user_tel = $row['user_tel'];
-                $user_fax = $row['user_fax'];
-                $user_email = $row['user_email'];
-                $user_factory = $row['user_factory'];
-                $user_address = $row['user_address'];
-                $user_role = $row['user_role'];
-            }
-            ?>
+            
             <center>
                 <div class="profile-userpic">
-                <img src="picture/pic_user/<?php echo $user_factory; ?>">
+                <img src="picture/pic_user/<?php echo $user[0]['user_factory']; ?>">
             </div>
             </center>
             <hr width="20%">
@@ -46,7 +23,7 @@
                 <?php } ?>
 
 
-                <form id="edit_user" method="post" action="<?php echo base_url(); ?>index.php/management_controller/editPassword_controller/update_user/<?php echo $user_id; ?>"  enctype="multipart/form-data">
+                <form id="edit_user" method="post" action="<?php echo base_url(); ?>index.php/management_controller/editPassword_controller/update_user/<?php echo $user[0]['user_id']; ?>"  enctype="multipart/form-data">
                     <fieldset>  
 
                         <div class="form-group">
@@ -54,16 +31,16 @@
                             <label  class="col-sm-2 control-label">คำนำหน้า :</label>
                             <div class="col-sm-2">
                                 <select class="form-control request" id="user_prefix" name="user_prefix">
-                                    <?php if ($user_prefix == "นาย") { ?>
-                                        <option value="<?php echo $user_prefix; ?>"><?php echo $user_prefix; ?></option>
+                                    <?php if ($user[0]['user_prefix'] == "นาย") { ?>
+                                        <option value="<?php echo $user[0]['user_prefix']; ?>"><?php echo $user[0]['user_prefix']; ?></option>
                                         <option value="นาง">นาง</option>
                                         <option value="นางสาว">นางสาว</option>
-                                    <?php } else if ($user_prefix == "นาง") { ?>
-                                        <option value="<?php echo $user_prefix; ?>"><?php echo $user_prefix; ?></option>
+                                    <?php } else if ($user[0]['user_prefix'] == "นาง") { ?>
+                                        <option value="<?php echo $user[0]['user_prefix']; ?>"><?php echo $user[0]['user_prefix']; ?></option>
                                         <option value="นาย">นาย</option>
                                         <option value="นางสาว">นางสาว</option>
-                                    <?php } else if ($user_prefix == "นางสาว") { ?>
-                                        <option value="<?php echo $user_prefix; ?>"><?php echo $user_prefix; ?></option>
+                                    <?php } else if ($user[0]['user_prefix'] == "นางสาว") { ?>
+                                        <option value="<?php echo $user[0]['user_prefix']; ?>"><?php echo $user[0]['user_prefix']; ?></option>
                                         <option value="นาย">นาย</option>
                                         <option value="นาง">นาง</option>
                                     <?php } ?>
@@ -74,32 +51,32 @@
                             </div>
                             <label  class="col-sm-1 control-label">ชื่อ :</label>
                             <div class="col-sm-3">
-                                <input class="form-control request" type="text" id="user_name" name="user_name"  maxlength="50" value="<?php echo $user_name; ?>"  placeholder="ชื่อ" >
+                                <input class="form-control request" type="text" id="user_name" name="user_name"  maxlength="50" value="<?php echo $user[0]['user_name']; ?>"  placeholder="ชื่อ" >
                             </div>
                             <label  class="col-sm-1 control-label">นามสกุล:</label>
                             <div class="col-sm-3">
-                                <input class="form-control request" type="text" id="user_last_name" name="user_last_name"   maxlength="50" value="<?php echo $user_last_name; ?>"  placeholder="นามสกุล">
+                                <input class="form-control request" type="text" id="user_last_name" name="user_last_name"   maxlength="50" value="<?php echo $user[0]['user_last_name']; ?>"  placeholder="นามสกุล">
                             </div>
 
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">อีเมลล์ :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="text"  id="user_email" name="user_email" maxlength="50" value="<?php echo $user_email; ?>" placeholder="อีเมลล์">
+                                <input class="form-control " type="text"  id="user_email" name="user_email" maxlength="50" value="<?php echo $user[0]['user_email']; ?>" placeholder="อีเมลล์">
                             </div>
                             <label  class="col-sm-2 control-label">เบอร์ที่ติดต่อได้ :</label>
                             <div class="col-sm-4">
-                                <input class="form-control request" type="number"  id="user_tel" name="user_tel" value="<?php echo $user_tel; ?>" placeholder="เบอร์ที่ติดต่อได้">
+                                <input class="form-control request" type="number"  id="user_tel" name="user_tel" value="<?php echo $user[0]['user_tel']; ?>" placeholder="เบอร์ที่ติดต่อได้">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">ที่อยู่ติดต่อได้ :</label>
                             <div class="col-sm-4">
-                                <textarea class="form-control"  id="user_address" name="user_address" maxlength="255" value="<?php echo $user_address; ?>" placeholder="ที่อยู่ติดต่อได้"><?php echo $user_address; ?></textarea>
+                                <textarea class="form-control"  id="user_address" name="user_address" maxlength="255" value="<?php echo $user[0]['user_address']; ?>" placeholder="ที่อยู่ติดต่อได้"><?php echo $user[0]['user_address']; ?></textarea>
                             </div>
                             <label  class="col-sm-2 control-label">รูปประจำตัว :</label>
                             <div class="col-sm-4">
-                                <label  class="col-sm-2 control-label"><?php echo $user_factory; ?></label>
+                                <label  class="col-sm-2 control-label"><?php echo $user[0]['user_factory']; ?></label>
                                 <input id="picture" name="picture" type="file" placeholder="รูปประจำตัว " class="form-control">
                             </div>
 
@@ -108,16 +85,16 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">เบอร์แฟกซ์ :</label>
                             <div class="col-sm-4">
-                                <input class="form-control " type="number"  id="user_fax" name="user_fax"  value="<?php echo $user_fax; ?>"  placeholder="เบอร์แฟกซ์">
+                                <input class="form-control " type="number"  id="user_fax" name="user_fax"  value="<?php echo $user[0]['user_fax']; ?>"  placeholder="เบอร์แฟกซ์">
                             </div>
                             <label  class="col-sm-2 control-label">สิทธิ์การใช้งาน :</label>
                             <div class="col-sm-4">
                                 <select class="form-control request" id="user_role" name="user_role">
-                                    <?php if ($user_role == "admin") { ?>
-                                        <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
+                                    <?php if ($user[0]['user_role'] == "admin") { ?>
+                                        <option value="<?php echo $user[0]['user_role']; ?>"><?php echo $user[0]['user_role'] ; ?></option>
                                         <option value="user">user</option>
-                                    <?php } else if ($user_role == "user") { ?>
-                                        <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
+                                    <?php } else if ($user[0]['user_role'] == "user") { ?>
+                                        <option value="<?php echo $user[0]['user_role']; ?>"><?php echo $user[0]['user_role']; ?></option>
                                         <option value="admin">admin</option>
                                     <?php } ?>
                                 </select>

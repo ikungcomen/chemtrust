@@ -43,6 +43,7 @@
                             <label  class="col-sm-2 control-label">อีเมลล์ :</label>
                             <div class="col-sm-4">
                                 <input class="form-control " type="text"  id="user_email" name="user_email" maxlength="50" placeholder="อีเมลล์">
+                                
                             </div>
                             <label  class="col-sm-2 control-label">เบอร์ที่ติดต่อได้ :</label>
                             <div class="col-sm-4">

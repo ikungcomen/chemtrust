@@ -174,7 +174,7 @@
 
                                 <center>
                                     <h4><?php echo $this->session->userdata('name'); ?></h4>
-                                    <font color="red"><h5>สถานะ :&nbsp;<?php echo $this->session->userdata('user_role'); ?>&nbsp;&nbsp;<a href="" id="select_logo">แก้ไขรูปภาพ</a> <input type="file"  id="logo"></h5></font>
+                                    <font color="red"><h5>สถานะ :&nbsp;<?php echo $this->session->userdata('user_role'); ?>&nbsp;&nbsp;<!--<a href="" id="select_logo">แก้ไขรูปภาพ</a> <input type="file"  id="logo">--></h5></font>
 
                                 </center>
                             </div>
@@ -197,8 +197,8 @@
 
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a ><span class="glyphicon glyphicon-book fa-1x"></span> คู่มือ</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> คู่มือการใช้งาน</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/cheme/chemeController/show_video"><span class="glyphicon glyphicon-chevron-right"></span> กฎหมาย</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> คู่มือการใช้งาน</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> กฎหมาย</a></li>
                         <li><a href="<?php echo base_url(); ?>index.php/login/logout"><span class="glyphicon glyphicon-chevron-right"></span> ออกจากระบบ</a></li>
                     </ul>
 

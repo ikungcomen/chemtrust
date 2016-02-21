@@ -41,13 +41,8 @@ class DBhelper extends CI_Model {
             return 0;
         }
     }
-
-    public function tb_msm_master($value) {
-        $sqlWhere = "";
-        if(trim($value) != ""){
-            $sqlWhere = $sqlWhere." where chem_msm_name != '".$value."'";
-        }
-        $sql = "select 	*  from tb_msm_master ".$sqlWhere;
+    public function tb_msm_master() {
+        $sql = "select 	*  from tb_msm_master order by chem_msm_no asc ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -70,18 +65,32 @@ class DBhelper extends CI_Model {
     public function search_chem($chem_no, $chem_name) {
         $sqlWhere = "";
         if (trim($chem_no) != "") {
-            $sqlWhere = $sqlWhere . " chem_no = '$chem_no'";
+            $sqlWhere = $sqlWhere . " tci.chem_no = '$chem_no'";
         }
         if (trim($chem_name) != "") {
             if ($sqlWhere != "") {
                 $sqlWhere = $sqlWhere . " and ";
             }
-            $sqlWhere = $sqlWhere . " chem_name_th = '$chem_name'";
+            $sqlWhere = $sqlWhere . " tci.chem_name_th = '$chem_name'";
         }
         if ($sqlWhere != "") {
             $sqlWhere = "where " . $sqlWhere;
         }
-        $sql = "select 	*  from tb_chem_info " . $sqlWhere;
+        $sql = " select chem_no as chem_no	"  ;
+        $sql = $sql."   ,tci.chem_cas_number as chem_cas_number";
+        $sql = $sql."   ,tci.chem_seq as chem_seq ";
+        $sql = $sql."   ,tci.chem_name_th as chem_name_th ";
+        $sql = $sql."   ,tci.chem_name_en as chem_name_en ";
+        $sql = $sql."   ,tcs.chem_store_name as chem_type";
+        $sql = $sql."   ,tci.chem_location as chem_location ";
+        $sql = $sql."   ,tci.chem_qty_in as chem_qty_in ";
+        $sql = $sql."   ,tci.chem_qty_in_msm as chem_qty_in_msm ";
+        $sql = $sql."   ,tci.chem_qty_boh as chem_qty_boh ";
+        $sql = $sql."   ,tci.chem_qty_boh_msm as chem_qty_boh_msm ";
+        $sql = $sql."   ,tci.update_userid as update_userid ";
+        $sql = $sql."   ,DATE_FORMAT(tci.update_date,'%d/%m/%Y') as update_date";
+        $sql = $sql." from tb_chem_info tci ";
+        $sql = $sql." left join tb_chem_store tcs on tci.chem_type  = tcs.chem_store_type ".$sqlWhere;
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -99,19 +108,25 @@ class DBhelper extends CI_Model {
     public function detai_chem($chem_no){
         $sql = "";
         $sql = " select chem_no as chem_no	"  ;
-        $sql = $sql."   ,chem_cas_number as chem_cas_number";
-        $sql = $sql."   ,chem_seq as chem_seq ";
-        $sql = $sql."   ,chem_name_th as chem_name_th ";
-        $sql = $sql."   ,chem_name_en as chem_name_en ";
-        $sql = $sql."   ,chem_type as chem_type";
-        $sql = $sql."   ,chem_location as chem_location ";
-        $sql = $sql."   ,chem_qty_in as chem_qty_in ";
-        $sql = $sql."   ,chem_qty_in_msm as chem_qty_in_msm ";
-        $sql = $sql."   ,chem_qty_boh as chem_qty_boh ";
-        $sql = $sql."   ,chem_qty_boh_msm as chem_qty_boh_msm ";
-        $sql = $sql."   ,update_userid as update_userid ";
-        $sql = $sql."   ,DATE_FORMAT(update_date,'%d/%m/%Y') as update_date";
-        $sql = $sql." from tb_chem_info where chem_no = ".$chem_no;
+        $sql = $sql."   ,tci.chem_cas_number as chem_cas_number";
+        $sql = $sql."   ,tci.chem_seq as chem_seq ";
+        $sql = $sql."   ,tci.chem_name_th as chem_name_th ";
+        $sql = $sql."   ,tci.chem_name_en as chem_name_en ";
+        $sql = $sql."   ,tci.chem_type as chem_type ";
+        $sql = $sql."   ,tcs.chem_store_name as chem_store_name ";
+        $sql = $sql."   ,tci.chem_location as chem_location ";
+        $sql = $sql."   ,tci.chem_qty_in as chem_qty_in ";
+        $sql = $sql."   ,tci.chem_qty_boh as chem_qty_boh ";
+        $sql = $sql."   ,tci.update_userid as update_userid ";
+        $sql = $sql."   ,tcw.chem_warehouse_name as chem_warehouse_name ";
+        $sql = $sql."   ,DATE_FORMAT(tci.update_date,'%d/%m/%Y') as update_date";
+        $sql = $sql."   ,(select chem_msm_name from tb_msm_master where chem_msm_no = tci.chem_qty_in_msm) as chem_qty_in_msm ";
+        $sql = $sql."   ,(select chem_msm_name from tb_msm_master where chem_msm_no = tci.chem_qty_boh_msm) as chem_qty_boh_msm ";
+        $sql = $sql." from tb_chem_info tci ";
+        $sql = $sql." left join tb_chem_store tcs on tci.chem_type  = tcs.chem_store_type ";
+        $sql = $sql." left join tb_chem_warehouse tcw on tcw.chem_warehouse_code  = tci.chem_location ";
+        
+        $sql = $sql."where chem_no = '".$chem_no."'";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;

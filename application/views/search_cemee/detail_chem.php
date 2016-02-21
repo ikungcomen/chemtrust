@@ -23,7 +23,7 @@
             <br><br>
             <div class="panel-body form-horizontal payment-form">
                 <div class="form-group">
-                    <label class="col-sm-12"><font color="red">แก้ไขล่าสุดเมื่อวันที่ : </font>&nbsp;<?php echo $chem_info[0]['update_date']; ?> &nbsp;<font color="red">โดยผู้ใช้ชื่อ : </font>&nbsp;<?php echo $chem_info[0]['update_userid']; ?></label>
+                    <label class="col-sm-12"><font color="red">แก้ไขล่าสุดเมื่อวันที่ : </font>&nbsp;<?php echo $chem_info[0]['update_date']; ?>&nbsp;<font color="red">โดยผู้ใช้ชื่อ : </font>&nbsp;<?php echo $chem_info[0]['update_userid']; ?></label>
                 </div>
                 <hr><br><br>
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
@@ -43,7 +43,7 @@
                     <label class="col-sm-2 text-right">ชื่อสารเคมี Eng : </label>
                     <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_name_en']; ?></font></label>
                     <label class="col-sm-2 text-right">ประเภทสารเคมี : </label>
-                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_type']; ?></font></label>
+                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_store_name']; ?></font></label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">จำนวนนำเข้า : </label>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">สถานที่จัดเก็บ : </label>
-                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_location']; ?></font></label>
+                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_warehouse_name']; ?></font></label>
                 </div>
                 <br>
                 <hr>
