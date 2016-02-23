@@ -48,12 +48,24 @@ class tb_chem_info extends CI_Model {
         $sql = "      select                   ";
         $sql = $sql."  tci.x_chem_no           ";
         $sql = $sql." ,tci.y_chem_no           ";
+        $sql = $sql." ,tci.x_chem_name_th      ";
+        $sql = $sql." ,tci.y_chem_name_th      ";
         $sql = $sql." ,tci.x_chem_type         ";
         $sql = $sql." ,tci.y_chem_type         ";
         $sql = $sql." ,tcsr.chem_relation_code ";
+        
+        $sql = $sql." ,tcr.chem_relation_code ";
+        $sql = $sql." ,tcr.chem_relation_name ";
+        $sql = $sql." ,tcr.chem_relation_descr ";
+        
         $sql = $sql."  from(  ";
-        $sql = $sql."           select x.chem_no as x_chem_no   ,y.chem_no as y_chem_no ";
-        $sql = $sql."                 ,x.chem_type as x_chem_type ,y.chem_type as y_chem_type ";
+        $sql = $sql."           select x.chem_no as x_chem_no   ";
+        $sql = $sql."                 ,y.chem_no as y_chem_no ";
+        $sql = $sql."                 ,x.chem_name_th as x_chem_name_th";
+        $sql = $sql."                 ,y.chem_name_th as y_chem_name_th";
+        $sql = $sql."                ,x.chem_type as x_chem_type ";
+        $sql = $sql."                ,y.chem_type as y_chem_type";
+        
         $sql = $sql."           from tb_chem_info x , tb_chem_info y ";
         $sql = $sql."           where x.chem_location = '".$chen_no."'"." and y.chem_location = '".$chen_no."'";
         $sql = $sql."       ) tci ";
@@ -63,6 +75,15 @@ class tb_chem_info extends CI_Model {
         $sql = $sql."or ";
         $sql = $sql."( tcsr.chem_store_type_main     = tci.y_chem_type ";
         $sql = $sql."and tcsr.chem_store_type_relation = tci.x_chem_type ) ";
+        
+        /**************************/
+        $sql = $sql." left join tb_chem_relation tcr on tcr.chem_relation_code = tcsr.chem_relation_code " ;
+        $sql = $sql."";
+        $sql = $sql."";
+        
+        
+        /**************************/
+        
         $sql = $sql." order by  tci.x_chem_no,tci.y_chem_no ";
         
         
@@ -77,7 +98,7 @@ class tb_chem_info extends CI_Model {
     }
     
     public function get_cheminfo($chem_location){
-        $sql = "select 	chem_no  from tb_chem_info where chem_location = '".$chem_location."' order by chem_no asc ";
+        $sql = "select 	chem_no,chem_name_th  from tb_chem_info where chem_location = '".$chem_location."' order by chem_no asc ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;

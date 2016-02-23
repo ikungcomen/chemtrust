@@ -20,7 +20,7 @@
                         <div class="col-sm-6 text-left">
                             <select class="form-control" id="chem_warehouse_code" name="chem_warehouse_code">
                                 <?php foreach ($chem_warehouse as $row) { ?>
-                                    <option value="<?php echo $row['chem_warehouse_code']; ?>" ><?php echo $row['chem_warehouse_name']; ?></option>
+                                    <option value="<?php echo $row['chem_warehouse_code']; ?>" <?php if($chem_wh ==$row['chem_warehouse_code'] ){echo 'selected="true"' ;} ?> ><?php echo $row['chem_warehouse_name']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -37,10 +37,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr id="header_table">
-                            <th></th>
+                            <th ></th>
                         <?php foreach ($chem_no as $row) { ?>
                         
-                            <th ><?php echo $row['chem_no']; ?></th>
+                            <th ><?php echo $row['chem_name_th']; ?></th>
                             <?php } ?>
                     </tr>
                 </thead>
@@ -51,31 +51,39 @@
                     $x_chemno_temp = "";
                     echo '<tr>';
                     foreach ($chem_info as $row) {
+                        
                         ?>
                         <?php
                         if ($first_step == 0) {
                             $first_step = 1;
-                            $x_chemno_temp = $row['x_chem_no'];
-                            $x_chemno_temp = $row['x_chem_no'];
+                            $x_chemno_temp = $row['x_chem_name_th'];
                             echo '<td >' . $x_chemno_temp . '</td>';
                         }
-                        if ($x_chemno_temp != $row['x_chem_no']) {
+                        if ($x_chemno_temp != $row['x_chem_name_th']) {
                             echo '</tr>';
                             echo '<tr>';
-                            $x_chemno_temp = $row['x_chem_no'];
+                            $x_chemno_temp = $row['x_chem_name_th'];
                             echo '<td >' . $x_chemno_temp . '</td>';
                         }
-                        echo '<td >' . $row['chem_relation_code'] . '</td>';
+                        if ($row['chem_relation_name'] != "") {
+                            echo '<td >' . '<img width="20px" height="20px" src="img/'.$row['chem_relation_name']. '"></td>';//$row['chem_relation_code'] 
+                        }
+                        
                     }
                     echo '</tr>';
                     ?>
-
+                    
+                    
 
                 </tbody>
 
             </table>
-
-
+            <hr>
+            <div class="form-group">
+                <img src="img/green.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.5 เมตร&nbsp;
+                <img src="img/yellow.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.3 เมตร&nbsp;
+                <img src="img/red.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : ห้ามวางใกล้กัน&nbsp;
+            </div>
         </div>
     </div>
 </div>

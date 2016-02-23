@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-1">
-                                    <a class="btn btn-primary" href="<?php base_url();?>index.php/chemstore_controller/chemStore_controller/show_chem_store_relation"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
+                                    <a class="btn btn-primary" href="<?php base_url();?>index.php/chemstore_controller/chemStore_controller/show_chem_store"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
                             </div>
                         </div>
                         <div class="form-group">

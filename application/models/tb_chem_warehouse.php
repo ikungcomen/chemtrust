@@ -6,6 +6,12 @@ class tb_chem_warehouse extends CI_Model{
         $result = $result->result_array();
         return $result;
     }
+    public function chem_warehouse_temp(){
+        $sql = " select * from tb_chem_warehouse order by chem_warehouse_code asc limit 1";
+        $result = $this->db->query($sql);
+        //$result = $result->result_array();
+        return $result;
+    }
     
     public function check_chemwarehouse($chem_warehouse_code){
         $sql = " select * from tb_chem_warehouse where chem_warehouse_code like '$chem_warehouse_code'";
