@@ -38,9 +38,9 @@
                             </div>
                             <label  class="col-sm-2 control-label">ประเภทสารเคมี :</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="chem_type" name="chem_type" value="<?php echo $chem_info[0]['chem_type']; ?>">
+                                <select class="form-control" id="chem_type" name="chem_type">
                                     <?php foreach ($chem_type as $row) { ?>
-                                        <option value="<?php echo $row['chem_store_type']; ?>"><?php echo $row['chem_store_name']; ?></option>
+                                    <option value="<?php echo $row['chem_store_type']; ?>" <?php if( $row['chem_store_type'] == $chem_info[0]['chem_type']) echo "selected ='true'"; ?> ><?php echo $row['chem_store_name']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -62,9 +62,9 @@
                             </div>
                             <label  class="col-sm-2 control-label">หน่วยนำเข้า :</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="chem_qty_in_msm" name="chem_qty_in_msm" value="<?php echo $chem_info[0]['chem_qty_in_msm']; ?>">
-                                    <?php foreach ($msm_master_in as $row) { ?>
-                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                <select class="form-control" id="chem_qty_in_msm" name="chem_qty_in_msm">
+                                    <?php foreach ($msm_master as $row) { ?>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>" <?php if($row['chem_msm_no'] == $chem_info[0]['chem_qty_in_msm']){ echo "selected='true'";}?> ><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
 
@@ -78,8 +78,8 @@
                             <label  class="col-sm-2 control-label">หน่วยคงเหลือ :</label>
                             <div class="col-sm-4">
                                 <select class="form-control" id="chem_qty_boh_msm" name="chem_qty_boh_msm" value="<?php echo $chem_info[0]['chem_qty_boh_msm']; ?>">
-                                    <?php foreach ($msm_master_out as $row) { ?>
-                                        <option value="<?php echo $row['chem_msm_no']; ?>"><?php echo $row['chem_msm_name']; ?></option>
+                                    <?php foreach ($msm_master as $row) { ?>
+                                        <option value="<?php echo $row['chem_msm_no']; ?>" <?php if($row['chem_msm_no'] == $chem_info[0]['chem_qty_boh_msm']){ echo "selected='true'";}?> ><?php echo $row['chem_msm_name']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -87,10 +87,9 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">สถานที่จัดเก็บ :</label>
                             <div class="col-sm-4">
-                                
                                     <select class="form-control" id="chem_location" name="chem_location">
                                         <?php foreach ($chem_warehouse as $row) { ?>
-                                            <option value="<?php echo $row['chem_warehouse_code']; ?>"><?php echo $row['chem_warehouse_name']; ?></option>
+                                        <option value="<?php echo $row['chem_warehouse_code']; ?>" <?php if($row['chem_warehouse_code'] == $chem_info[0]['chem_location']){ echo "selected='true'";} ?> ><?php echo $row['chem_warehouse_name']; ?></option>
                                         <?php } ?>
                                     </select>
                                 

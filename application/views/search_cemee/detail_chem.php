@@ -12,7 +12,7 @@
             <br>
             <div class="form-group">
                 <div class="col-sm-6">
-                    <a class="btn btn-success"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/show_search_cemee"  ><span class="glyphicon glyphicon-backward" aria-hidden="true"> ย้อนกลับ</span></a>
+                    <a class="btn btn-success"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/show_search_cemee_all"  ><span class="glyphicon glyphicon-backward" aria-hidden="true"> ย้อนกลับ</span></a>
                 </div>
 
                 <div class="col-sm-6 text-right">
@@ -49,13 +49,13 @@
                     <label class="col-sm-2 text-right">จำนวนนำเข้า : </label>
                     <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_qty_in']; ?></font></label>
                     <label class="col-sm-2 text-right">หน่วยนำเข้า : </label>
-                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_qty_in_msm']; ?></font></label>
+                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_msm_name_in']; ?></font></label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">จำนวนคงเหลือ : </label>
                     <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_qty_boh']; ?></font></label>
                     <label class="col-sm-2 text-right">หน่วยคงเหลือ : </label>
-                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_qty_boh_msm']; ?></font></label>
+                    <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_msm_name_out']; ?></font></label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">สถานที่จัดเก็บ : </label>

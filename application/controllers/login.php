@@ -8,7 +8,7 @@ class login extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('DBHelper');
-        $this->load->database();
+        //$this->load->database();
        
     }
 

@@ -1,11 +1,7 @@
 <?php
 class tb_chem_warehouse extends CI_Model{
-    public function chem_warehouse($chem_warehouse){
-        $sqlWhere = "";
-        if (trim($chem_warehouse) != "") {
-            $sqlWhere = $sqlWhere." where chem_warehouse_code != '".$chem_warehouse."'";
-        }
-        $sql = " select * from tb_chem_warehouse".$sqlWhere;
+    public function chem_warehouse(){
+        $sql = " select * from tb_chem_warehouse order by chem_warehouse_code asc";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -19,7 +15,6 @@ class tb_chem_warehouse extends CI_Model{
         }else{
             return 0;
         }
-        
     }
     public function add_chemwarehouse($chem_warehouse_code, $chem_warehouse_name, $chem_warehoue_rule, $chem_warehouse_user_control, $user_id, $date){
         $this->db->set('chem_warehouse_code', $chem_warehouse_code);

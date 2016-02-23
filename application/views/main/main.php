@@ -38,7 +38,7 @@
                         </a>
                     </p>
                     <p>
-                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-warning">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/chemstore_controller/chemStore_controller" class="btn btn-sq-lg btn-warning">
                             <br/>
                             <span class="glyphicon glyphicon-folder-close fa-4x" aria-hidden="true"></span>
                             <br/><br/>

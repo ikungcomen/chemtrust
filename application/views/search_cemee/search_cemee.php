@@ -10,6 +10,9 @@
 
             <hr width="100%">
             <br><br>
+            <?php if ($this->session->userdata('message_save') == 'error'){ ?>
+                    <div id="alert-message" class="alert alert-warning alert-dismissible" role="alert">ไม่พบข้อมูล</div>
+            <?php }?>
             <form id="search_chem" method="post"  action="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/search_chem">
                 <fieldset>  
                     <div class="form-group">

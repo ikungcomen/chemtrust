@@ -4,7 +4,7 @@ class main_controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->database();
+		//$this->load->database();
                 if($this->session->userdata('loginuser') < 1){
                     redirect('login','refresh');
                 }
@@ -12,8 +12,6 @@ class main_controller extends CI_Controller {
         }
         
         public function index(){
-           
-            
            if ($this->session->userdata('loginuser') > 0) {
                 $this->load->view('include/header');
                 $this->load->view('main/main');

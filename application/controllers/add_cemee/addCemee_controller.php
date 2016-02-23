@@ -49,11 +49,11 @@ class addCemee_controller extends CI_Controller {
 
     public function getTb_chem_info() {
         $chem_no = $this->input->post('chem_no');
-        $result = $this->DBhelper->getTb_chem_info($chem_no);
+        $result  = $this->DBhelper->getTb_chem_info($chem_no);
         if ($result > 0) {
-            echo "1";
+            echo 1;
         }else{
-            echo "0";
+            echo 0;
         }
     }
 

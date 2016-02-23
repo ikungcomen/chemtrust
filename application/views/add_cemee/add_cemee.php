@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">ลำดับในบัญชี :</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <input class="form-control " type="number"  id="chem_seq" name="chem_seq"  placeholder="ลำดับในบัญชี">
                             </div>
                             <label  class="col-sm-2 control-label">ประเภทสารเคมี :</label>
@@ -40,8 +40,9 @@
                                         <option value="<?php echo $row['chem_store_type']; ?>"><?php echo $row['chem_store_name']; ?></option>
                                     <?php } ?>
                                 </select>
-                                
-                                
+                            </div>
+                            <div class="col-sm-1">
+                                    <a class="btn btn-primary" href="<?php base_url();?>index.php/chemstore_controller/chemStore_controller/show_chem_store_relation"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
                             </div>
                         </div>
                         <div class="form-group">
@@ -176,9 +177,8 @@
           $("#alert-message").alert('close');
           <?php $this->session->unset_userdata('message_save');?>
          }, 2000);
-        $("#chem_no").autocomplete({
-            source: function (request, response) {
-                $.ajax({
+         $("#chem_no").mouseout(function(){
+             $.ajax({
                     url: "<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/getTb_chem_info",
                     type: 'POST',
                     cache: false,
@@ -186,17 +186,16 @@
                         chem_no: $("#chem_no").val()
                     },
                     success: function (data) {
-                        if(data == '1'){
+                        if(data > 0){
                             $('#message').html('ข้อมูลรหัสสารเคมี '+$("#chem_no").val()+' มีอยู่แล้วในระบบ');
                             $('#myModal').modal('show');
-                            $('#chem_no').val('');
+                           $('#chem_no').val('');
                             
-                        }
+                       }
                     }
                 });
-            },
-            minLength: 1
-        });
+         });
+        
     });
 
 </script>

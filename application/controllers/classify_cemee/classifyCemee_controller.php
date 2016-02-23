@@ -8,7 +8,7 @@ class classifyCemee_controller extends CI_Controller {
                 {
                     redirect("login");
                 }                
-		$this->load->database();   
+		//$this->load->database();   
 	}
 
 	public function classify_cemee(){
