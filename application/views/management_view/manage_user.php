@@ -13,7 +13,7 @@
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">ลบข้อมูลเรียบร้อย</div>
                 <?php } ?>
-                <table class="table table-hover">
+                <table class="table table-bordered">
                     <thead>
                         <tr id="header_table">
                             <th class="text-center">ลำดับ</th>
@@ -38,17 +38,17 @@
                                 <td class="text-center"><?php echo $row['user_role'] ?></td>
                                 <td class="text-center">
                                     <?php if ($row['user_status'] == 'A') { ?>
-                                        <?php echo "อนุมัติ"; ?>
+                                    <font color="#00FF00"><?php echo "อนุมัติ"; ?></font>
                                     <?php } else { ?>
-                                        <?php echo "ยังไม่อนุมัติ"; ?>
+                                       <font color="red"> <?php echo "ยังไม่อนุมัติ"; ?></font>
                                     <?php } ?>
                                 </td>
                                 <td class="text-center">
                                     <?php if ($row['user_role'] != 'admin') { ?>
                                         <?php if ($row['user_status'] == 'A') { ?>
-                                            <a class=" btn btn-warning " id="" href="<?php echo base_url(); ?>index.php/management_controller/editUser_controller/update_unapprove_status/<?php echo $row['user_id']; ?>" ><span class="glyphicon glyphicon-remove" aria-hidden="true"> ยกเลิก</span></a>
+                                            <a class=" btn btn-warning " id="" href="<?php echo base_url(); ?>index.php/management_controller/editUser_controller/update_unapprove_status/<?php echo $row['user_id']; ?>" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                                         <?php } else { ?>
-                                            <a class=" btn btn-success " id="" href="<?php echo base_url(); ?>index.php/management_controller/editUser_controller/update_approve_status/<?php echo $row['user_id']; ?>" ><span class="glyphicon glyphicon-ok" aria-hidden="true"> อนุมัติ</span></a>
+                                            <a class=" btn btn-success " id="" href="<?php echo base_url(); ?>index.php/management_controller/editUser_controller/update_approve_status/<?php echo $row['user_id']; ?>" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
                                         <?php } ?>
                                     <?php } ?>
                                 </td>

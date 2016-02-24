@@ -20,12 +20,9 @@
                 </div>
 
             </div>
-            <br><br>
+            <br>
             <div class="panel-body form-horizontal payment-form">
-                <div class="form-group">
-                    <label class="col-sm-12"><font color="red">แก้ไขล่าสุดเมื่อวันที่ : </font>&nbsp;<?php echo $chem_info[0]['update_date']; ?>&nbsp;<font color="red">โดยผู้ใช้ชื่อ : </font>&nbsp;<?php echo $chem_info[0]['update_userid']; ?></label>
-                </div>
-                <hr><br><br>
+                <hr><br>
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">แก้ไขข้อมูลเรียบร้อย</div>
                 <?php } ?>
@@ -60,9 +57,17 @@
                 <div class="form-group">
                     <label class="col-sm-2 text-right">สถานที่จัดเก็บ : </label>
                     <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_warehouse_name']; ?></font></label>
+                </div><hr>
+                <div class="form-group">
+                    <label class="col-sm-3"><font color="#0040FF">ผู้สร้าง : &nbsp;&nbsp;<?php echo $chem_info[0]['create_userid']; ?></font></label>
+                    <label class="col-sm-3"><font color="#0040FF">วันที่สร้าง : &nbsp;&nbsp;<?php echo $chem_info[0]['create_date']; ?></font></label>
+                    <label class="col-sm-3"><font color="#0040FF">ผู้แก้ไข : &nbsp;<?php echo $chem_info[0]['update_userid']; ?></font></label>
+                    <label class="col-sm-3"><font color="#0040FF">วันที่แก้ไข : &nbsp;<?php echo $chem_info[0]['update_date']; ?></font></label>
+
+
                 </div>
-                <br>
-                <hr>
+
+
 
             </div>  
         </div>
@@ -73,7 +78,7 @@
     $(document).ready(function () {
         window.setTimeout(function () {
             $("#alert-message").alert('close');
-            <?php $this->session->unset_userdata('message_save'); ?>
+<?php $this->session->unset_userdata('message_save'); ?>
         }, 2000);
 
 

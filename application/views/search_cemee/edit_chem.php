@@ -5,7 +5,7 @@
                 <span class="glyphicon glyphicon-edit fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>แก้ไขข้อมูลสารเคมี</b></h4>
+                <h4 class="font-title"><b>แก้ไขข้อมูลสารเคมี(แก้ไข)</b></h4>
             </div>
 
             <hr width="100%">

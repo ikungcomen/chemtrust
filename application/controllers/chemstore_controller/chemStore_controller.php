@@ -60,20 +60,7 @@ class chemStore_controller extends CI_Controller {
         }
     }
 
-    public function show_chem_store_relation() {
-        $this->load->view('include/header');
-        $result['chem_relation'] = $this->tb_chem_store->chem_relation();
-        $result['chem_type'] = $this->tb_chem_store->chem_type();
-        $this->load->view('chemstore_view/addchemstore_relation', $result);
-        $this->load->view('include/footer');
-    }
-
-    public function add_chem_store_relation() {
-        //$this->load->view('include/header');
-        //$this->load->view('chemstore_view/addchemstore_relation', $result);
-        //$this->load->view('include/footer');
-    }
-
+    
     public function show_chem_store() {
         $this->load->view('include/header');
         $this->load->view('chemstore_view/addchem_store');

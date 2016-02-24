@@ -5,7 +5,7 @@
                 <span class="glyphicon glyphicon-search fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>การจัดเก็บสารเคมีแบบแยกห่าง</b></h4>
+                <h4 class="font-title"><b>การจัดเก็บสารเคมีแบบแยกห่าง(ค้นหา)</b></h4>
             </div>
 
             <hr width="100%">
@@ -34,7 +34,12 @@
                     <br><br>
                 </fieldset>
             </form>
-            <table class="table table-hover">
+            <?php $count ="";foreach ($chem_no as $row) {$count = $row['chem_name_th'];} ?>
+                    
+                            
+                            
+            <?php if($count != ""){?>                
+            <table class="table table-bordered"><!--table-hover -->
                 <thead>
                     <tr id="header_table">
                             <th ></th>
@@ -44,7 +49,7 @@
                             <?php } ?>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody id="myTable">
 
                     <?php
                     $first_step = 0;
@@ -76,14 +81,18 @@
                     
 
                 </tbody>
-
+                
             </table>
+            <div class="col-md-12 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            </div>
             <hr>
             <div class="form-group">
                 <img src="img/green.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.5 เมตร&nbsp;
                 <img src="img/yellow.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.3 เมตร&nbsp;
                 <img src="img/red.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : ห้ามวางใกล้กัน&nbsp;
             </div>
+            <?php }?>
         </div>
     </div>
 </div>

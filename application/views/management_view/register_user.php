@@ -5,7 +5,7 @@
                 <span class="glyphicon glyphicon-user fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>สมัครสมาชิก</b></h4>
+                <h4 class="font-title"><b>สมัครสมาชิก(เพิ่ม)</b></h4>
             </div>
 
             <hr width="100%">
@@ -20,7 +20,7 @@
                         <div class="form-group">
                             
                             <label  class="col-sm-2 control-label">คำนำหน้า :</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-10">
                                 <select class="form-control request" id="user_prefix" name="user_prefix">
                                     <option value="">คำนำหน้า</option>
                                     <option value="นาย">นาย</option>
@@ -29,15 +29,18 @@
 
                                 </select>
                             </div>
-                            <label  class="col-sm-1 control-label">ชื่อ :</label>
-                            <div class="col-sm-3">
+                            
+
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">ชื่อ :</label>
+                            <div class="col-sm-4">
                                 <input class="form-control request" type="text" id="user_name" name="user_name"  maxlength="50"  placeholder="ชื่อ">
                             </div>
-                            <label  class="col-sm-1 control-label">นามสกุล:</label>
-                            <div class="col-sm-3">
+                            <label  class="col-sm-2 control-label">นามสกุล:</label>
+                            <div class="col-sm-4">
                                 <input class="form-control request" type="text" id="user_last_name" name="user_last_name"   maxlength="50"  placeholder="นามสกุล">
                             </div>
-
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">อีเมลล์ :</label>

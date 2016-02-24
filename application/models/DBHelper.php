@@ -116,6 +116,9 @@ class DBhelper extends CI_Model {
         $sql = $sql."   ,tci.chem_qty_in_msm                     as chem_qty_in_msm ";
         $sql = $sql."   ,tci.chem_qty_boh                        as chem_qty_boh ";
         $sql = $sql."   ,tci.chem_qty_boh_msm                    as chem_qty_boh_msm ";
+        $sql = $sql."   ,tci.create_userid                           as create_userid";
+        $sql = $sql."   ,DATE_FORMAT(tci.create_date,'%d/%m/%Y')     as create_date";
+        
         $sql = $sql."   ,tci.update_userid                       as update_userid ";
         $sql = $sql."   ,tcw.chem_warehouse_name                 as chem_warehouse_name ";
         $sql = $sql."   ,DATE_FORMAT(tci.update_date,'%d/%m/%Y') as update_date";

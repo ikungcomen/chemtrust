@@ -5,11 +5,11 @@
                 <span class="glyphicon glyphicon-search fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>ค้นหาสารเคมีด้วยรหัส</b></h4>
+                <h4 class="font-title"><b>ค้นหาสารเคมีด้วยรหัส(ค้นหา)</b></h4>
             </div>
 
             <hr width="100%">
-            <br><br>
+            <br>
             <?php if ($this->session->userdata('message_save') == 'error'){ ?>
                     <div id="alert-message" class="alert alert-warning alert-dismissible" role="alert">ไม่พบข้อมูล</div>
             <?php }?>
@@ -28,9 +28,10 @@
                             <a class="btn btn-primary" id="btn_search_chem"><span class="glyphicon glyphicon-search fa-1x" aria-hidden="true"> ค้นหา</span></a>
                         </div>
                     </div>
-                    <br><br>
+                    <br>
                 </fieldset>
             </form>
+                    <hr>
             <div class="panel-body form-horizontal payment-form">
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">ลบข้อมูลเรียบร้อย</div>
@@ -43,7 +44,7 @@
                     }
                     ?>
                     <?php if ($count > 0) { ?>
-                        <table class="table table-hover">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr id="header_table">
                                     <th class="text-center">ลำดับ</th>
@@ -65,18 +66,19 @@
                                         <td class="text-center"><?php echo $row['chem_no']; ?></td>
                                         <td class="text-center"><?php echo $row['chem_name_th']; ?></td>
                                         <td class="text-center"><?php echo $row['chem_name_en']; ?></td>
-                                        <td class="text-center"><?php echo $row['chem_type']; ?></td>
-                                        <td class="text-center"><a class="btn btn-danger"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/delete_chem/<?php echo $row['chem_no']; ?>"  ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>&nbsp;<a class="btn btn-info"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/detai_chem/<?php echo $row['chem_no']; ?>"  ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td></td>
+                                        <td class="text-center"><font color="#FF0000"><?php echo $row['chem_type']; ?></font></td>
+                                        <td class="text-center"><a class="btn btn-danger"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/delete_chem/<?php echo $row['chem_no']; ?>"  ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>&nbsp;<a class="btn btn-info"  href="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/detai_chem/<?php echo $row['chem_no']; ?>"  ><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a></td></td>
                                     </tr><?php } ?>
                             </tbody>
 
                         </table>
-<?php } ?>
-                </div>
-            </div>  
-            <div class="col-md-12 text-center">
+<?php } ?> <div class="col-md-12 text-center">
                 <ul class="pagination pagination-lg pager" id="myPager"></ul>
             </div>
+                </div>
+                   
+            </div>  
+            
         </div>
     </div>
 </div>

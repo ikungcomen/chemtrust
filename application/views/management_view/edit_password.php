@@ -2,15 +2,15 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-1">
-                <span class="glyphicon glyphicon-user fa-3x icon" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-edit fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>แก้ไขรหัสผ่าน</b></h4>
+                <h4 class="font-title"><b>แก้ไขรหัสผ่าน(แก้ไข)</b></h4>
             </div>
             <hr width="100%">
             <br>
             <div class="panel-body form-horizontal payment-form">
-                <a class="btn btn-info" href="<?php base_url(); ?>index.php/management_controller/editPassword_controller/select_user/<?php echo $this->session->userdata('user_id'); ?>"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> แก้ไขข้อมูลส่วนตัว</span></a><br><hr><br>
+                <a class="btn btn-info" href="<?php base_url(); ?>index.php/management_controller/editPassword_controller/select_user/<?php echo $this->session->userdata('user_id'); ?>"><span class="glyphicon glyphicon-edit fa-1x" aria-hidden="true"> แก้ไขข้อมูล</span></a><br><hr><br>
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">แก้ไขรหัสผ่านเรียบร้อย</div>
                 <?php }?>

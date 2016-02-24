@@ -5,7 +5,7 @@
                 <span class="glyphicon glyphicon-plus-sign fa-3x icon" aria-hidden="true"></span>
             </div>
             <div class="col-sm-11">
-                <h4 class="font-title"><b>เพิ่มประเภทสารเคมีเข้าสู่ระบบ</b></h4>
+                <h4 class="font-title"><b>เพิ่มประเภทสารเคมีเข้าสู่ระบบ(เพิ่ม)</b></h4>
             </div>
 
             <hr width="100%">

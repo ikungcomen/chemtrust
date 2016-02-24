@@ -103,7 +103,12 @@ class tb_chem_info extends CI_Model {
         $result = $result->result_array();
         return $result;
     }
-
+    public function chem_report(){
+        $sql = "select 	*  from tb_chem_info order by chem_no asc ";
+        $result = $this->db->query($sql);
+        $result = $result->result_array();
+        return $result;
+    }
 }
 ?>
 

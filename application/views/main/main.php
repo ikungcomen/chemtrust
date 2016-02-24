@@ -62,7 +62,7 @@
                         </a>
                     </p>
                     <p>
-                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-success">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/report_controller/msds_controller" class="btn btn-sq-lg btn-success">
                             <br/>
                             <span class="glyphicon glyphicon-print fa-4x" aria-hidden="true"></span>
                             <br/><br/>
@@ -76,12 +76,15 @@
                             <br/><br/>
                             ฉลากสารเคมี <br>
                         </a>
-
-                        <!--<a href="#" class="btn btn-sq-lg btn-success">
-                          <i class="fa fa-user fa-5x"></i><br/>
-                          Demo Warning <br>Button
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/chremstorerelation_controller/chremstore_relation/show_chem_store_relation" class="btn btn-sq-lg btn-warning ">
+                          <br/>
+                            <span class="glyphicon glyphicon-tree-deciduous fa-4x" aria-hidden="true"></span>
+                            <br/><br/>
+                          เงื่อนไขการวง <br>
                         </a>
-                        <a href="#" class="btn btn-sq-lg btn-primary">
+                        <!--<a href="#" class="btn btn-sq-lg btn-primary">
                           <i class="fa fa-user fa-5x"></i><br/>
                           Demo Danger <br>Button
                         </a>-->
