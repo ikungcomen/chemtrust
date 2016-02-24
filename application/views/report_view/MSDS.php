@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group text-right">
                             <div class="col-sm-12">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/report_controller/msds_controller/chem_report"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> พิมพ์รายงาน</span></a>
+                                <a target="_blank" class="btn btn-primary" href="<?php echo base_url(); ?>index.php/report_controller/msds_controller/chem_report"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> พิมพ์รายงาน</span></a>
                             </div>
                         </div>
                     </fieldset>
