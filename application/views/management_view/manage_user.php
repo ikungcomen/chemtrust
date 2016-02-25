@@ -13,7 +13,7 @@
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">ลบข้อมูลเรียบร้อย</div>
                 <?php } ?>
-                <table class="table table-bordered">
+                <table class="myTable_style">
                     <thead>
                         <tr id="header_table">
                             <th class="text-center">ลำดับ</th>

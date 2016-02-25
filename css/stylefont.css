@@ -32,10 +32,12 @@ hr {
     border-width: 1px;
 } 
 input.request{
-    background-color: #F7FE2E;
+    border-color: #FA5858;
+    color: red;
 }
 select.request{
-    background-color: #F7FE2E;
+    border-color: #FA5858;
+    color: red;
 }
 
 

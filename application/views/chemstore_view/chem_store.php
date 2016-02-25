@@ -30,7 +30,7 @@
                         <br>
                         <br>
                     </div>
-                    <hr>
+                    
                     <br><br>
                 </fieldset>
             </form>
@@ -39,7 +39,7 @@
                             
                             
             <?php if($count != ""){?>                
-            <table class="table table-bordered"><!--table-hover -->
+            <table class="myTable_style"><!--table-hover -->
                 <thead>
                     <tr id="header_table">
                             <th ></th>

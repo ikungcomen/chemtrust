@@ -37,7 +37,8 @@
         <!-- Paging -->
         <script src="<?php echo base_url(); ?>js/tablepagegin.js"></script>
 
-
+        <!-- style table -->
+        <link rel="stylesheet" href="css/style_table.css">
 
 
 

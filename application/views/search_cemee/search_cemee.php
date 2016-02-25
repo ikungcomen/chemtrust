@@ -31,12 +31,12 @@
                     <br>
                 </fieldset>
             </form>
-                    <hr>
+                   
             <div class="panel-body form-horizontal payment-form">
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">ลบข้อมูลเรียบร้อย</div>
                 <?php } ?>
-                <div class="panel-body form-horizontal payment-form">
+                <div class="panel-body form-horizontal payment-form" >
                     <?php
                     $count = 0;
                     foreach ($chem_info as $row) {
@@ -44,15 +44,18 @@
                     }
                     ?>
                     <?php if ($count > 0) { ?>
-                        <table class="table table-bordered">
+                    
+                    <table class="myTable_style"><!--class="table table-bordered"-->
                             <thead>
-                                <tr id="header_table">
+                                <tr>
                                     <th class="text-center">ลำดับ</th>
                                     <th class="text-center">รหัสสารเคมี</th>
                                     <th class="text-center">ชื่อสารเคมี Th</th>
                                     <th class="text-center">ชื่อสารเคมี Eng</th>
                                     <th class="text-center">ประเภทสารเคมี</th>
                                     <th class="text-center">รายละเอียด</th>
+                                    
+                                   
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -61,7 +64,7 @@
                                 foreach ($chem_info as $row) {
                                     $count++;
                                     ?>
-                                    <tr>
+                                <tr>
                                         <td class="text-center"><?php echo $count; ?></td>
                                         <td class="text-center"><?php echo $row['chem_no']; ?></td>
                                         <td class="text-center"><?php echo $row['chem_name_th']; ?></td>

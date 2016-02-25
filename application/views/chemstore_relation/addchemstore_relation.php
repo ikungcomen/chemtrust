@@ -67,8 +67,8 @@
                         </div>
                     </fieldset>
                 </form>
-                <hr>
-                <table class="table table-bordered">
+                
+                <table class="myTable_style">
                             <thead>
                                 <tr id="header_table">
                                     <th class="text-center">ลำดับ</th>

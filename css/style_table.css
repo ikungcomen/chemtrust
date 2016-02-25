@@ -1,0 +1,33 @@
+.myTable_style{
+    width:100%; 
+    border-collapse: collapse;
+    -moz-box-shadow: 5px 5px 5px #ccc;  
+    -webkit-box-shadow: 5px 5px 5px #ccc;  
+    box-shadow: 5px 5px 5px #ccc;  
+
+}
+.myTable_style tr:nth-child(2n+1) {
+    background-color: #E6E6E6;
+}
+.myTable_style tr:nth-child(2n+0) {
+    background-color: #FAFAFA;
+}
+.myTable_style th{ 
+    background-color: #5882FA;
+    color: white;
+    border-bottom: 1px solid #848484;
+}
+.myTable_style td{ 
+    padding:7px; 
+    border-bottom: 1px solid #848484;
+}
+.myTable_style tr{
+    background: #A4A4A4;
+    height:  40px;
+}
+.myTable_style tr:hover {
+    background-color: #D8D8D8;
+}
+
+
+
