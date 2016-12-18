@@ -14,7 +14,7 @@
                 <?php if ($this->session->userdata('message_save') == 'true') { ?>
                     <div id="alert-message" class="alert alert-success alert-dismissible" role="alert">บันทึกข้อมูลเรียบร้อย</div>
                 <?php }?>
-                <form id="save_cemee" method="post" action="<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/save_cemee">
+                <form id="save_cemee" method="post" action="<?php echo base_url(); ?>index.php/add_cemee/addCemee_controller/save_cemee" enctype="multipart/form-data">
                     <fieldset>  
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">รหัสสารเคมี :</label>
@@ -106,12 +106,27 @@
                                 <a class="btn btn-primary" href="<?php base_url();?>index.php/chem_warehouse/chemwarehouse_controller/chem_warehouse"><span class="glyphicon glyphicon-plus fa-1x" aria-hidden="true"></span></a>
                             </div>
                         </div>
+                        <div class="form-group">
+                          <label  class="col-sm-2 control-label">MSDS :</label>
+                         <div class="col-sm-4">
+                                <label><font color="red">*** นามสกุลไฟล์ xls,xlsx,pdf เท่านั้น</font></label>
+                                <input id="msds_f" name="msds_f" type="file" placeholder="MSDS " class="form-control request"/>
+                         </div>
+                           <label  class="col-sm-2 control-label">ฉลากสารเคมี :</label>
+                          <div class="col-sm-4 text-right">
+                                <label><font color="red">*** นามสกุลไฟล์ xls,xlsx,pdf เท่านั้น</font></label>
+                                <input id="label_f" name="label_f" type="file" placeholder="ฉลากสารเคมี " class="form-control request"/>
+                         </div>
+                        </div>
                         <div class="form-group text-right">
                             <div class="col-sm-12">
                                 <a class="btn btn-primary" id="save"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> บันทึกข้อมูล</span></a>
                                 <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-refresh fa-1x" aria-hidden="true"> ยกเลิก</span></button>
                             </div>
                         </div>
+                        
+                     
+                        
                     </fieldset>
                 </form>
             </div>
@@ -122,8 +137,8 @@
 <?php $this->load->view('modal.html'); ?>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#save").click(function () {
-
+        $("#save").click(function () {             
+            
             var chem_no = $('#chem_no').val().trim();
             var chem_cas_number = $('#chem_cas_number').val().trim();
             var chem_seq = $('#chem_seq').val().trim();
@@ -135,17 +150,12 @@
             var chem_qty_in_msm = $('#chem_qty_in_msm').val().trim();
             var chem_qty_boh = $('#chem_qty_boh').val().trim();
             var chem_qty_boh_msm = $('#chem_qty_boh_msm').val().trim();
-
+            var msds_f = $('#msds_f').val().trim();
+            var label_f = $('#label_f').val().trim();
             if (chem_no == "") {
                 $('#message').html('กรุณาระบุ รหัสสารเคมี');
                 $('#myModal').modal('show');
-            } /*else if (chem_cas_number == "") {
-                $('#message').html('กรุณาระบุ Cas Number');
-                $('#myModal').modal('show');
-            } else if (chem_seq == "") {
-                $('#message').html('กรุณาระบุ ลำดับในบัญชี');
-                $('#myModal').modal('show');
-            } */else if (chem_type == "") {
+            } else if (chem_type == "") {
                 $('#message').html('กรุณาระบุ ประเถทสารเคมี');
                 $('#myModal').modal('show');
             } else if (chem_name_th == "") {
@@ -168,10 +178,42 @@
                 $('#myModal').modal('show');
             } else if (chem_location == "") {
                 $('#message').html('กรุณาระบุ สถานที่จัดเก็บ');
-                $('#myModal').modal('show');
-            }else {
-                $("#save_cemee").submit();
-            }
+                $('#myModal').modal('show');            
+            
+            } else if (msds_f == "") {
+                $('#message').html('กรุณาระบุ ไฟล์ MSDS');
+                $('#myModal').modal('show');           
+            
+             }else if (label_f == "") {
+                $('#message').html('กรุณาระบุ ไฟล์ ฉลากสารเคมี');
+                $('#myModal').modal('show');          
+            
+             } 
+             else {
+                var num = msds_f.split(".").length;
+                var pic_arr = msds_f.split(".");
+                var file_name = pic_arr[num-1];
+                if(file_name != "xls" && file_name != "xlsx" && file_name != "pdf"){// 
+                    $('#message').html('กรุณาเลือกไฟล์MSDSนามสกุล xls หรือ xlsx หรือ pdf เท่านั้น');
+                    $('#myModal').modal('show');
+                }                
+                else{
+                    var num = label_f.split(".").length;
+                    var pic_arr = label_f.split(".");
+                    var file_name = pic_arr[num-1];
+                     if(file_name != "xls" && file_name != "xlsx" && file_name != "pdf"){// 
+                    $('#message').html('กรุณาเลือกไฟล์ฉลากสารเคมีนามสกุล xls หรือ xlsx หรือ pdf เท่านั้น');
+                    $('#myModal').modal('show');
+                     } 
+                     else {
+                
+                        $("#save_cemee").submit();
+                     }
+                }                
+               
+            }            
+            /*
+            $("#save_cemee").submit(); */           
         });
         window.setTimeout(function () {
           $("#alert-message").alert('close');
@@ -197,6 +239,8 @@
          });
         
     });
+    
+    
 
 </script>
 

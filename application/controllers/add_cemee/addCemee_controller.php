@@ -38,13 +38,50 @@ class addCemee_controller extends CI_Controller {
         $chem_location = $this->input->post('chem_location');
         $user_id = $this->session->userdata('user_id');
         $date = date('y-m-d');
-        $result_insert = $this->DBhelper->insert_cemee($chem_no, $chem_cas_number, $chem_seq, $chem_type, $chem_name_th, $chem_name_en, $chem_qty_in, $chem_qty_in_msm, $chem_qty_boh, $chem_qty_boh_msm, $chem_location, $user_id, $date);
+        
+       // $filename_msds = "";
+       // $filename_label = "";
+        //echo $this->input->post('msds_f');
+        $base_part = './file_web/chem_desc';
+        $config['upload_path'] = $base_part;
+        $config['allowed_types'] = 'xls|xlsx|pdf';
+        $config['max_size'] = '10000';
+        $config['max_width'] = '300000';
+        $config['max_height'] = '300000';
+        //------------------------------------------------------------------
+        $config['file_name'] = $_SERVER['REQUEST_TIME'] . rand(). '-'.$chem_no;
+        $this->load->library('upload', $config);
+        //------------------------------------------------------------------
+        $filename_msds = "";
+        $filename_label = "";
+        if (!$this->upload->do_upload('msds_f')) {           
+            $error = array('error' => $this->upload->display_errors());
+            // print_r($error);
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $upload_data = $this->upload->data();
+            $filename_msds = $upload_data['file_name'];
+        } 
+        
+      
+       if (!$this->upload->do_upload('label_f')) {
+            $error = array('error' => $this->upload->display_errors());
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $upload_data = $this->upload->data();
+            $filename_label = $upload_data['file_name'];
+        }
+        
+        
+        $result_insert = $this->DBhelper->insert_cemee($chem_no, $chem_cas_number, $chem_seq, $chem_type, $chem_name_th, $chem_name_en, $chem_qty_in, $chem_qty_in_msm, $chem_qty_boh, $chem_qty_boh_msm, $chem_location,$filename_msds,$filename_label, $user_id, $date);
         if ($result_insert) {
             $this->session->set_userdata('message_save', 'true');
         } else {
             $this->session->set_userdata('message_save', 'false');
         }
         redirect('add_cemee/addCemee_controller/add_cemee');
+         
+         
     }
 
     public function getTb_chem_info() {

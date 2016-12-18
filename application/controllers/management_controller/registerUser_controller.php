@@ -6,9 +6,9 @@ class registerUser_controller extends CI_Controller {
         parent::__construct();
         $this->load->model('tb_user');
 
-        if ($this->session->userdata('loginuser') < 1) {
+        /*if ($this->session->userdata('loginuser') < 1) {
             redirect('login', 'refresh');
-        }
+        }*/
     }
 
     public function register_user() {
@@ -29,6 +29,10 @@ class registerUser_controller extends CI_Controller {
         $user_id = $this->input->post('user_id');
         $user_pass = $this->input->post('user_pass');
         $user = $this->session->userdata('user_id');
+        if($user =="")
+        {
+           $user='admin'; 
+        }
         $date = date('y-m-d');
         $filename = "";
         $base_part = './picture/pic_user';

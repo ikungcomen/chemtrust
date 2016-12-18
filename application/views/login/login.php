@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="form-group text-center">
                                                 <a class="btn btn-success"  id="btn_login"><span class="glyphicon glyphicon-log-in fa-1x" aria-hidden="true"> เข้าสู่ระบบ</span></a>
-                                                <button class="btn btn-primary" type="reseet"><span class="glyphicon glyphicon-user fa-1x" aria-hidden="true"> ลืมรหัสผ่าน</span></button>
+                                                <a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/management_controller/registerUser_controller/register_user"><span class="glyphicon glyphicon-user fa-1x" aria-hidden="true"> สมัครสมาชิก</span></a>
                                             </div>
 
                                         </form>

@@ -42,12 +42,13 @@ if ($model[0]['method'] != 'main') {
             <div class="panel-body form-horizontal payment-form">
                 <form id="ml_frm" method="post" action="<?php echo base_url(); ?>index.php/ministry_labor/ministry_labor_controller/search_list">                
                     <input type ="hidden" id="cmd" name="cmd">
+                    
                     <fieldset>  
 
                         <div class="form-group">                           
-                            <div class="col-sm-6 text-lefft">                                
-                                <a id="back_btn" class="btn btn-primary" href="<?php echo base_url(); ?>index.php/classify_cemee/classifyCemee_controller/classify_cemee">
-                                    <span class="glyphicon glyphicon-backward fa-1x" aria-hidden="true" >กลับ</span>
+                            <div class="col-sm-6 text-left">                                
+                                <a id="back_btn" class="btn btn-success" href="<?php echo base_url(); ?>index.php/main_law/main_law_controller/main_law">
+                                    <span class="glyphicon glyphicon-backward fa-1x" aria-hidden="true" >ย้อนกลับ</span>
                                 </a>                              
                             </div>
                             <div class="col-sm-6 text-right">  
@@ -98,26 +99,27 @@ if ($model[0]['method'] != 'main') {
                         <div class="form-group text-center" >
                             <div class="col-sm-12 text-right">
                                 <ul class="pagination pagination-sm">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
+                                  <?php   if ($model[0]['method'] == 'haveRow'){ 
+                                      foreach($model[0]['paging'] as $value) {   
+                                             echo $value;     
+                                          }
+                                       }
+                                  
+                                     ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="form-group text-center"> 
                             <div class="col-sm-12"> 
-                                <table class="table table-bordered" style="table-layout: fixed;">
+                                <table class="myTable_style" style="table-layout: fixed;">
                                     <thead>                               
                                         <tr>
-                                            <th style="width: 7%" >ลำดับ</th>
-                                            <th style="width: 30%">ไทย</th>
-                                            <th style="width: 30%">อังกฤษ</th>
-                                            <th style="width: 20%">CAS number</th>
-                                            <th style="width: 15%">แก้ไข/ลบ</th>
+                                            <th style="width: 7%;text-align:  center" ><small>ลำดับ</small></th>
+                                            <th style="width: 30%;text-align: center"><small>ไทย</small></th>
+                                            <th style="width: 30%;text-align: center"><small>อังกฤษ</small></th>
+                                            <th style="width: 20%;text-align: center"><small>CAS number</small></th>
+                                            <th style="width: 13%;text-align: center"><small>แก้ไข/ลบ</small></th>
                                         </tr>
-
                                     </thead>
                                     <tbody>
                                         <?php
@@ -125,11 +127,11 @@ if ($model[0]['method'] != 'main') {
                                             if ($model[0]['method'] == 'haveRow') {
                                                 $data = $model[0]['data']['data'];
                                                 foreach ($data as $value) {
-                                                    echo "<tr>";
-                                                    echo "<td style='word-wrap:break-word;'>" . $value['chem_seq'] . "</td>";
+                                                    echo "<tr style='text-align: center'>";
+                                                    echo "<td style='word-wrap:break-word;'><small>" . $value['chem_seq'] . "</small></td>";
                                                     echo "<td style='word-wrap:break-word;'><small>" . $value['chem_name_th'] . "</small></td>";
-                                                    echo "<td style='word-wrap:break-word;'><small>" . $value['chem_name_en'] . "<small></td>";
-                                                    echo "<td style='word-wrap:break-word;'><small>" . $value['chem_cas_number'] . "<small></td>";
+                                                    echo "<td style='word-wrap:break-word;'><small>" . $value['chem_name_en'] . "</small></td>";
+                                                    echo "<td style='word-wrap:break-word;'><small>" . $value['chem_cas_number'] . "</small></td>";
                                                     ?>
                                                 <td>
 

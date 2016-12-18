@@ -43,15 +43,16 @@ if ($model[0]['method'] != 'main') {
             <div class="panel-body form-horizontal payment-form">
                 <form id="mi_frm" method="post" action="<?php echo base_url(); ?>index.php/ministry_industry/ministry_industry_controller/search_list">                
                     <input type ="hidden" id="cmd" name="cmd">
+                 
                     <fieldset>  
 
                         <div class="form-group">                           
-                              <div class="col-sm-6 text-lefft">                                
-                                <a id="back_btn" class="btn btn-primary" href="<?php echo base_url(); ?>index.php/classify_cemee/classifyCemee_controller/classify_cemee">
-                                    <span class="glyphicon glyphicon-backward fa-1x" aria-hidden="true" >กลับ</span>
+                              <div class="col-sm-6 text-left">                                
+                                <a id="back_btn" class="btn btn-success" href="<?php echo base_url(); ?>index.php/main_law/main_law_controller/main_law">
+                                    <span class="glyphicon glyphicon-backward fa-1x" aria-hidden="true" >ย้อนกลับ</span>
                                 </a>                              
                             </div>
-                             <div class="col-sm-6 text-rigth">  
+                             <div class="col-sm-6 text-right">  
                                 <a id="search_btn" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-search fa-1x" aria-hidden="true"> ค้นหา</span>
                                 </a>    
@@ -99,41 +100,54 @@ if ($model[0]['method'] != 'main') {
                                 <input class="form-control" type="text" id="chem_desc" name="chem_desc"    placeholder="คำอธิบาย" >
                             </div>
                         </div>  
-                       
+                          <div class="form-group text-center" >
+                            <div class="col-sm-12 text-right">
+                                <ul class="pagination pagination-sm">
+                                  <?php   if ($model[0]['method'] == 'haveRow'){ 
+                                      foreach($model[0]['paging'] as $value) {   
+                                             echo $value;     
+                                          }
+                                       }
+                                  
+                                     ?>
+                                </ul>
+                            </div>
+                        </div>
+                        
                      <div class="form-group text-center"> 
                          <div class="col-sm-12"> 
-                            <table class="table table-striped">
+                            <table class="myTable_style" style="table-layout: fixed;">
                                 <thead>                               
                                     <tr>
-                                        <th><small>บัญชีที่</small></th>
-                                        <th><small>ลำดับที่</small></th>
-                                        <th><small>ชื่อวัตถุอันตราย</small></th>
-                                        <th><small>CAS number</small></th>
-                                        <th><small>ชนิดของวัตถุอันตราย</small></th>
-                                         <th><small>เงื่อนไข</small></th>
-                                        <th><small></small></th>
-                                    </tr>
-                                   
+                                        <th style="width: 10%;text-align: center"><small>บัญชีที่</small></th>
+                                        <th style="width: 10%;text-align: center"><small>ลำดับที่</small></th>
+                                        <th style="width: 10%;text-align: center"><small>ชื่อวัตถุอันตราย</small></th>
+                                        <th style="width: 10%;text-align: center"><small>CAS number</small></th>
+                                        <th style="width: 10%;text-align: center"><small>ชนิดของวัตถุอันตราย</small></th>
+                                        <th style="width: 10%;text-align: center"><small>เงื่อนไข</small></th>
+                                        <th style="width: 15%;text-align: center"><small>แก้ไข/ลบ</small></th>
+                                    </tr>                                   
                                 </thead>
-                                <tbody
+                                <tbody>
                                  <?php
                                    if ($model[0]['method'] != 'main') {
                                         if ($model[0]['method'] == 'haveRow') {
                                              $data=$model[0]['data']['data'];                                             
                                              foreach ($data as $value) {                                              
                                                   echo "<tr>";
-                                                  echo "<td>" . $value['chem_list_acc_no'] ."</td>";
-                                                  echo "<td><small>" . $value['chem_seq'] ."</small></td>";
-                                                  echo "<td><small>" . $value['chem_ind_name'] ."<small></td>";
-                                                  echo "<td><small>" . $value['chem_ind_type'] ."<small></td>";
-                                                  echo "<td><small>" . $value['chem_condition'] ."<small></td>";
+                                                  echo "<td style='word-wrap:break-word;'>" . $value['chem_list_acc_no'] ."</td>";
+                                                  echo "<td style='word-wrap:break-word;'><small>" . $value['chem_seq'] ."</small></td>";
+                                                  echo "<td style='word-wrap:break-word;'><small>" . $value['chem_ind_name'] ."</small></td>";
+                                                   echo "<td style='word-wrap:break-word;'><small>" . $value['chem_cas_number'] ."</small></td>";
+                                                  echo "<td style='word-wrap:break-word;'><small>" . $value['chem_ind_type'] ."</small></td>";
+                                                  echo "<td  style='word-wrap:break-word;'><small>" . $value['chem_condition'] ."</small></td>";
                                   ?>
                                                   <td>
-                                                      <a id="edit_btn" class="btn btn-warning" href="<?php echo base_url(); ?>index.php/ministry_industry/ministry_industry_controller/ministry_industry_go_edit?chem_list_acc_no=<?php echo $value['chem_list_acc_no'] ;?>&chem_seq=<?php echo $value['chem_seq'] ;?>">
-                                                      <span class="glyphicon glyphicon-edit  fa-1x" aria-hidden="true"> แก้ไข</span>
+                                                   <a id="edit_btn" class="btn btn-warning" href="<?php echo base_url(); ?>index.php/ministry_industry/ministry_industry_controller/ministry_industry_go_edit?chem_list_acc_no=<?php echo $value['chem_list_acc_no'] ;?>&chem_seq=<?php echo $value['chem_seq'] ;?>">
+                                                      <span class="glyphicon glyphicon-edit  fa-1x" aria-hidden="true"></span>
                                                   </a>
-                                                       <a id="edit_btn" class="btn btn-danger" href="<?php echo base_url(); ?>index.php/ministry_industry/ministry_industry_controller/delete?chem_list_acc_no=<?php echo $value['chem_list_acc_no'] ;?>&chem_seq=<?php echo $value['chem_seq'] ;?>">
-                                                      <span class="glyphicon glyphicon-remove  fa-1x" aria-hidden="true"> ลบ</span>
+                                                   <a id="edit_btn" class="btn btn-danger" href="<?php echo base_url(); ?>index.php/ministry_industry/ministry_industry_controller/delete?chem_list_acc_no=<?php echo $value['chem_list_acc_no'] ;?>&chem_seq=<?php echo $value['chem_seq'] ;?>">
+                                                      <span class="glyphicon glyphicon-remove  fa-1x" aria-hidden="true"></span>
                                                   </a>
                                                  </td>
                                     <?php
@@ -143,8 +157,7 @@ if ($model[0]['method'] != 'main') {
                                         }
                                    }
                                         
-                                 ?>
-                                 
+                                 ?>                                 
                                   
                                     
                                 </tbody>

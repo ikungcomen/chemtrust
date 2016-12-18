@@ -57,7 +57,24 @@
                 <div class="form-group">
                     <label class="col-sm-2 text-right">สถานที่จัดเก็บ : </label>
                     <label class="col-sm-2 text-left"><font color="red"><?php echo $chem_info[0]['chem_warehouse_name']; ?></font></label>
-                </div><hr>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 text-right">พิมพ์ MSDS : </label>
+                    <div class="col-sm-2 text-left"> 
+                        <a id="print_classify_btn" class="btn btn-primary" href="file_web/chem_desc/<?php echo $chem_info[0]['chem_msds_file']; ?>" target="_blank">
+                                    <span class="glyphicon glyphicon-print fa-1x" aria-hidden="true"> MSDS</span>
+                      </a>                      
+                   </div>
+                   <label class="col-sm-2 text-right">พิมพ์ฉลาก : </label>
+                    <div class="col-sm-2   text-left"> 
+                        <a id="print_classify_btn" class="btn btn-primary" href="file_web/chem_desc/<?php echo $chem_info[0]['chem_label_file']; ?>" target="_blank">
+                                    <span class="glyphicon glyphicon-print fa-1x" aria-hidden="true"> ฉลาก</span>
+                      </a>
+                      
+                   </div>
+                </div>
+                    
+                <hr>
                 <div class="form-group">
                     <label class="col-sm-3"><font color="#0040FF">ผู้สร้าง : &nbsp;&nbsp;<?php echo $chem_info[0]['create_userid']; ?></font></label>
                     <label class="col-sm-3"><font color="#0040FF">วันที่สร้าง : &nbsp;&nbsp;<?php echo $chem_info[0]['create_date']; ?></font></label>

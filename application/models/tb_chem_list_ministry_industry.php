@@ -3,7 +3,7 @@
 class tb_chem_list_ministry_industry extends CI_Model {
 
     public function get_tb_chem_list_ministry_industry($chem_list_acc_no, $chem_seq) {
-        $sql = " select *  from tb_chem_list_ministry_industry ";
+        $sql = " select l.chem_list_acc_no,l.chem_seq,l.chem_cas_number,l.chem_ind_name,l.chem_ind_type,l.chem_condition,l.chem_desc,DATE_FORMAT(l.create_date,'%d/%m%/%Y') as create_date ,l.create_userid,DATE_FORMAT(l.update_date,'%d/%m%/%Y') as update_date,l.update_userid   from tb_chem_list_ministry_industry l";
         $sql = $sql . " where chem_seq = '$chem_seq' and chem_list_acc_no = '$chem_list_acc_no'";
         // echo $sql;
         $result = $this->db->query($sql);
@@ -19,11 +19,12 @@ class tb_chem_list_ministry_industry extends CI_Model {
         return $result;
     }
 
-    public function get_tb_chem_list_ministry_industry_list($chem_list_acc_no, $chem_seq, $chem_desc) {
+    public function get_tb_chem_list_ministry_industry_list($chem_list_acc_no, $chem_seq, $chem_desc,$page,$rec_show) {
         $sql = " select *  from tb_chem_list_ministry_industry ";
         $sqlOrder = " order  by chem_list_acc_no,chem_seq ";
+         $sqlLimit = " Limit $page,$rec_show";
         $sqlWhere = $this->whereCondition($chem_list_acc_no, $chem_seq, $chem_desc);
-        $sql = $sql . $sqlWhere . $sqlOrder;
+        $sql = $sql . $sqlWhere . $sqlOrder . $sqlLimit;
         // echo $sql;        
         $result = $this->db->query($sql);
         $result = $result->result_array();
@@ -32,9 +33,9 @@ class tb_chem_list_ministry_industry extends CI_Model {
 
     public function check_tb_chem_list_ministry_industry_list($chem_list_acc_no, $chem_seq, $chem_desc) {
         $sql = " select 1  from tb_chem_list_ministry_industry ";
-        $sqlLimt = " LIMIT 1 ";
+        //$sqlLimt = " LIMIT 1 ";
         $sqlWhere = $this->whereCondition($chem_list_acc_no, $chem_seq, $chem_desc);
-        $sql = $sql . $sqlWhere . $sqlLimt;
+        $sql = $sql . $sqlWhere ;//. $sqlLimt;
         //echo $sql;
         $result = $this->db->query($sql)->num_rows();
         return $result;
@@ -98,8 +99,8 @@ class tb_chem_list_ministry_industry extends CI_Model {
         $this->db->set('chem_ind_type', $chem_ind_type);
         $this->db->set('chem_condition', $chem_condition);
         $this->db->set('chem_desc', $chem_desc);
-        //$this->db->set('create_date', $date);
-        // $this->db->set('create_userid', $user_id);
+        $this->db->set('create_date', $date);
+        $this->db->set('create_userid', $user_id);
         $this->db->set('update_date', $date);
         $this->db->set('update_userid', $user_id);
 

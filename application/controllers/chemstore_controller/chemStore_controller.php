@@ -34,7 +34,8 @@ class chemStore_controller extends CI_Controller {
         }
         $result['chem_info'][] = array("x_chem_name_th" => '','chem_relation_name' => '');
         $result['chem_no'][]   = array('chem_name_th' => '');
-       
+        $result['chem_relation'] = $this->tb_chem_relation->chem_relation();
+        
         $this->load->view('chemstore_view/chem_store', $result);
         $this->load->view('include/footer');
     }
@@ -44,6 +45,7 @@ class chemStore_controller extends CI_Controller {
         $result['chem_wh'] = $chem_warehouse_code;
         $check_cheminfo = $this->tb_chem_info->get_cheminfo_location($chem_warehouse_code);
         $result['chem_warehouse'] = $this->tb_chem_warehouse->chem_warehouse();
+        $result['chem_relation'] = $this->tb_chem_relation->chem_relation();
         if ($check_cheminfo > 0) {
             $result['chem_no'] = $this->tb_chem_info->get_cheminfo($chem_warehouse_code);
             $result['chem_info'] = $this->tb_chem_info->search_chem_store($chem_warehouse_code);

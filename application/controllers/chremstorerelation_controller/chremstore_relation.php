@@ -36,18 +36,34 @@ class chremstore_relation extends CI_Controller{
     public function add_chem_store_relation() {
         $chem_type_1   = $this->input->post('chem_type_1');
         $chem_type_2   = $this->input->post('chem_type_2');
-        $chem_relation = $this->input->post('chem_relation');
-        $result_check = $this->tb_chem_relation->check_chemstore_relation($chem_type_1,$chem_type_2,$chem_relation);
+    
+        $chem_store_type_main="";
+        $chem_store_type_relation="";
+        $chem_relation_code = $this->input->post('chem_relation');
+        
+        if($chem_type_1 <= $chem_type_2)
+        {
+            $chem_store_type_main=$chem_type_1;
+            $chem_store_type_relation=$chem_type_2;
+        }
+        else
+        {
+            $chem_store_type_main=$chem_type_2;
+            $chem_store_type_relation=$chem_type_1;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $date = date('y-m-d'); 
+        $result_check = $this->tb_chem_relation->check_chemstore_relation($chem_store_type_main,$chem_store_type_relation);
         if ($result_check > 0) {
-            //$result_update = $this->tb_chem_relation->update_chemstore_relation();
-            //if ($result_update > 0) {
-              //  $this->session->set_userdata('message_save', 'true');
-            //}
+            $result_update = $this->tb_chem_relation->update_chemstore_relation($chem_store_type_main,$chem_store_type_relation,$chem_relation_code,$date,$user_id);
+            if ($result_update > 0) {
+               $this->session->set_userdata('message_save', 'true');
+            }
         }else{
-            //$result_insert = $this->tb_chem_relation->insert_chemstore_relation();
-            //if ($result_insert > 0) {
-              //  $this->session->set_userdata('message_save', 'true');
-            //}
+            $result_insert = $this->tb_chem_relation->insert_chemstore_relation($chem_store_type_main,$chem_store_type_relation,$chem_relation_code,$date,$user_id);
+            if ($result_insert > 0) {
+                $this->session->set_userdata('message_save', 'true');
+            }
         }
         
         redirect('chremstorerelation_controller/chremstore_relation/show_chem_store_relation','refresh');

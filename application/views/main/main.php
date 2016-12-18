@@ -46,7 +46,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-danger">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/assessment_risk/assessment_risk_controller/main" class="btn btn-sq-lg btn-danger">
                             <br/>
                             <span class="glyphicon glyphicon-globe fa-4x" aria-hidden="true"></span>
                             <br/></i><br/>
@@ -54,7 +54,7 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="" class="btn btn-sq-lg btn-primary">
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/law_abiding/law_abiding_controller/main" class="btn btn-sq-lg btn-primary">
                             <br/>
                             <span class="glyphicon glyphicon-ok-circle fa-4x" aria-hidden="true"></span>
                             <br/><br/>
@@ -62,6 +62,15 @@
                         </a>
                     </p>
                     <p>
+                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/chremstorerelation_controller/chremstore_relation/show_chem_store_relation" class="btn btn-sq-lg btn-success ">
+                          <br/>
+                            <span class="glyphicon glyphicon-tree-deciduous fa-4x" aria-hidden="true"></span>
+                            <br/><br/>
+                          เงื่อนไขการวง <br>
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <!--
                         <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/report_controller/msds_controller" class="btn btn-sq-lg btn-success">
                             <br/>
                             <span class="glyphicon glyphicon-print fa-4x" aria-hidden="true"></span>
@@ -76,14 +85,7 @@
                             <br/><br/>
                             ฉลากสารเคมี <br>
                         </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a id="imgmenu-hover" href="<?php echo base_url(); ?>index.php/chremstorerelation_controller/chremstore_relation/show_chem_store_relation" class="btn btn-sq-lg btn-warning ">
-                          <br/>
-                            <span class="glyphicon glyphicon-tree-deciduous fa-4x" aria-hidden="true"></span>
-                            <br/><br/>
-                          เงื่อนไขการวง <br>
-                        </a>
+                        -->
                         <!--<a href="#" class="btn btn-sq-lg btn-primary">
                           <i class="fa fa-user fa-5x"></i><br/>
                           Demo Danger <br>Button

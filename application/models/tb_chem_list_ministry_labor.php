@@ -5,8 +5,8 @@ class tb_chem_list_ministry_labor extends CI_Model {
     
    public function get_tb_chem_list_ministry_labor($chem_seq)
    {
-        $sql = " select *  from tb_chem_list_ministry_labor ";
-        $sql = $sql . " where chem_seq = '$chem_seq' ";
+        $sql = " select l.chem_seq,l.chem_cas_number,l.chem_name_th,l.chem_name_en,l.chem_desc,DATE_FORMAT(l.create_date,'%d/%m%/%Y') as create_date ,l.create_userid,DATE_FORMAT(l.update_date,'%d/%m%/%Y') as update_date,l.update_userid from tb_chem_list_ministry_labor l ";
+        $sql = $sql . " where l.chem_seq = '$chem_seq' ";
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -20,13 +20,14 @@ class tb_chem_list_ministry_labor extends CI_Model {
         return $result;
     }
     
-    public function get_tb_chem_list_ministry_labor_list($chem_seq,$chem_desc)
+    public function get_tb_chem_list_ministry_labor_list($chem_seq,$chem_desc,$page,$rec_show)
    {
         $sql = " select *  from tb_chem_list_ministry_labor ";
         $sqlOrder = " order  by chem_seq ";
+        $sqlLimit = " Limit $page,$rec_show";
         $sqlWhere = $this->whereCondition($chem_seq, $chem_desc);         
-        $sql=$sql .$sqlWhere . $sqlOrder;
-       // echo $sql;        
+        $sql=$sql .$sqlWhere . $sqlOrder .$sqlLimit;
+        //echo $sql;        
         $result = $this->db->query($sql);
         $result = $result->result_array();
         return $result;
@@ -35,13 +36,23 @@ class tb_chem_list_ministry_labor extends CI_Model {
    public function check_tb_chem_list_ministry_labor_list($chem_seq,$chem_desc)
    {
         $sql = " select 1  from tb_chem_list_ministry_labor ";
-        $sqlLimt = " LIMIT 1 ";
+        //$sqlLimt = " LIMIT 1 ";
         $sqlWhere = $this->whereCondition($chem_seq, $chem_desc);       
-        $sql=$sql . $sqlWhere . $sqlLimt ;
+        $sql=$sql . $sqlWhere  ;
         //echo $sql;
         $result = $this->db->query($sql)->num_rows();
         return $result;
    }
+   /*public function count_row_tb_chem_list_ministry_labor_list($chem_seq,$chem_desc)
+   {
+        $sql = " select 1  from tb_chem_list_ministry_labor ";
+        $sqlLimt = " LIMIT 1 ";
+        $sqlWhere = $this->whereCondition($chem_seq, $chem_desc);       
+        $sql=$sql . $sqlWhere  ;
+        //echo $sql;
+        $result = $this->db->query($sql)->num_rows();
+        return $result;
+   }*/
    public function whereCondition($chem_seq,$chem_desc)
       {
        $sqlWhere=" ";
@@ -94,8 +105,7 @@ class tb_chem_list_ministry_labor extends CI_Model {
         $this->db->set('create_date', $date);
         $this->db->set('create_userid', $user_id);
         $this->db->set('update_date', $date);
-        $this->db->set('update_userid', $user_id);
-        
+        $this->db->set('update_userid', $user_id);        
         $this->db->set('chem_seq', $chem_seq);
         
         

@@ -17,7 +17,7 @@ class ministry_industry_controller extends CI_Controller {
             $this->load->view('include/header');
 	    $this->load->view('ministry_industry/ministry_industry_view',$result);
 	    $this->load->view('include/footer');
-	}
+	}     
         
         public function ministry_industry_go_edit(){ 
             $chem_seq  = $this->input->get('chem_seq');
@@ -29,7 +29,7 @@ class ministry_industry_controller extends CI_Controller {
         
        
           public function ministry_industry_go_add(){ 
-             $result['model'][]=array('method' => 'add',"message_flag"=>'-',"message"=>'-');         
+          $result['model'][]=array('method' => 'add',"message_flag"=>'-',"message"=>'-');         
         
         //print_r($result);
           $this->load->view('include/header');
@@ -56,11 +56,49 @@ class ministry_industry_controller extends CI_Controller {
          public function search_list(){ 
           $chem_list_acc_no = $this->input->post('chem_list_acc_no');
          $chem_seq = $this->input->post('chem_seq');
-         $chem_desc = $this->input->post('chem_desc');
-         if($this->tb_chem_list_ministry_industry->check_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc)>0)
+         $chem_desc = $this->input->post('chem_desc');       
+         $total_rec=$this->tb_chem_list_ministry_industry->check_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc);
+         $rec_perpage=$this->config->item('rec_perpage');
+         $paging = $this->paging($chem_list_acc_no,$chem_seq, $chem_desc,0,$total_rec,$rec_perpage);    
+         if( $total_rec >0)
          {
-           $data['data'] = $this->tb_chem_list_ministry_industry->get_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc);
-           $result['model'][]=array('method' => 'haveRow',"message_flag"=>'-',"message"=>'-','data'=>$data);
+           $data['data'] = $this->tb_chem_list_ministry_industry->get_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc,0,$rec_perpage);
+           $result['model'][]=array('method' => 'haveRow',"message_flag"=>'-',"message"=>'-','data'=>$data,'paging'=>$paging);
+         }
+         else
+         {
+             $result['model'][]=array('method' => 'noRow',"message_flag"=>'W',"message"=>'ไม่พบข้อมูล');
+         }
+        
+        //print_r($result);
+          $this->load->view('include/header');
+	  $this->load->view('ministry_industry/ministry_industry_view',$result);
+	  $this->load->view('include/footer');
+         }
+         
+         public function search_list_by_page($chem_list_acc_no,$chem_seq,$chem_desc,$page,$rec_perpage){       
+          if($chem_list_acc_no=='null')
+             {
+                $chem_list_acc_no="";
+                     
+             }
+         if($chem_seq=='null')
+             {
+                $chem_seq="";
+                     
+             }
+          if($chem_desc=='null')
+             {
+                $chem_desc="";
+                     
+             }
+         $total_rec=$this->tb_chem_list_ministry_industry->check_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc);
+         //$rec_perpage=2;
+         $paging = $this->paging($chem_list_acc_no,$chem_seq, $chem_desc,$page,$total_rec,$rec_perpage);    
+         if( $total_rec >0)
+         {
+           $data['data'] = $this->tb_chem_list_ministry_industry->get_tb_chem_list_ministry_industry_list($chem_list_acc_no,$chem_seq,$chem_desc,$page,$rec_perpage);
+           $result['model'][]=array('method' => 'haveRow',"message_flag"=>'-',"message"=>'-','data'=>$data,'paging'=>$paging);
          }
          else
          {
@@ -90,9 +128,116 @@ class ministry_industry_controller extends CI_Controller {
 	  $this->load->view('ministry_industry/ministry_industry_view_maintain',$result);
 	  $this->load->view('include/footer');
          }
-        
          
-      
+         
+        
+     /*public function paging($chem_list_acc_no,$chem_seq,$chem_desc,$page,$taltal_page,$rec_perpage){ 
+         $result_re=array();         
+         $al_count=0;         
+         $al_count=($taltal_page / $rec_perpage);
+         if($al_count < 1)
+         {
+             $al_count = 0 ;
+         }
+         if($chem_list_acc_no=='')
+             {
+                $chem_list_acc_no="null";
+                     
+             }
+         if($chem_seq=='')
+             {
+                $chem_seq="null";
+                     
+             }
+          if($chem_desc=='')
+             {
+                $chem_desc="null";
+                     
+             }
+         if( $taltal_page %  $rec_perpage > 0)
+         {
+             $al_count=$al_count + 1;
+         }
+         //echo $chem_seq."-".$chem_desc;
+         $url=base_url()."index.php/ministry_industry/ministry_industry_controller/search_list_by_page/$chem_list_acc_no/$chem_seq/$chem_desc";
+         $result_re[0]="<li><a href='$url/0/$rec_perpage'><<</a></li>"; 
+         for($i=1;$i <= $al_count;$i++)
+         {
+            if($i==1)
+            {
+                $y = 0;
+            }
+            else{
+                $y=$i;
+            }
+            if($i==$page)
+            {
+                $result_re[$i]="<li><a>$i</a></li>";  
+            }
+            else
+            {
+                $result_re[$i]="<li><a href='$url/$y/$rec_perpage'>$i</a></li>";  
+            }
+            
+         }
+         $last_page=$al_count;
+         if($al_count==1)$last_page=0;
+         $result_re[$al_count+1]="<li><a href='$url/$last_page/$rec_perpage'>>></a></li>";
+         return $result_re;        
+        } */         
+        
+       public function paging($chem_list_acc_no,$chem_seq,$chem_desc,$page,$taltal_rec,$rec_perpage){            
+          if($chem_list_acc_no=='')
+             {
+                $chem_list_acc_no="null";
+                     
+             }
+         if($chem_seq=='')
+             {
+                $chem_seq="null";
+                     
+             }
+          if($chem_desc=='')
+             {
+                $chem_desc="null";
+                     
+             }
+         $result_re=array();         
+         $al_count=0;         
+         $al_count=floor($taltal_rec / $rec_perpage);      
+         if( $taltal_rec %  $rec_perpage > 0)
+         {
+             $al_count=$al_count + 1;
+         }
+         //echo $al_count;
+         $first_page = 0;
+         $last_page = ($al_count-1) * $rec_perpage;
+         $pre_page=($page-$rec_perpage);
+         if ($page == 0) $pre_page=0;
+         $next_page=($page + $rec_perpage);
+         if (($al_count-1) * $rec_perpage == $page ) $next_page=$page;
+         $url=base_url()."index.php/ministry_industry/ministry_industry_controller/search_list_by_page/$chem_list_acc_no/$chem_seq/$chem_desc";
+         $result_re[0] =" ";
+         $result_re[0]=$result_re[0]. "<li><a href='$url/$first_page/$rec_perpage'><<</a></li>";
+         $result_re[0]=$result_re[0] . "<li><a href='$url/$pre_page/$rec_perpage'><</a></li>";
+         for($i=1;$i <= $al_count;$i++)
+         {            
+            $y = ($i -1) * $rec_perpage;
+            if($y==$page)
+            {
+                $result_re[$i]="<li><a>$i</a></li>";  
+            }
+            else
+            {
+                $result_re[$i]="<li><a href='$url/$y/$rec_perpage'>$i</a></li>";  
+            }
+            
+         }         
+         $result_re[$al_count+1]="<li><a href='$url/$next_page/$rec_perpage'>></a></li>";
+         $result_re[$al_count+1]=$result_re[$al_count+1] . "<li><a href='$url/$last_page/$rec_perpage'>>></a></li>";
+        // print_r($result_re);
+         return $result_re;        
+        }  
          
          
         public function edit(){   

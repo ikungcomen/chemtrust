@@ -39,13 +39,12 @@
                             
                             
             <?php if($count != ""){?>                
-            <table class="myTable_style"><!--table-hover -->
+            <table class="myTable_style" style="max-height: 450px; width: 850px;overflow-y: auto;overflow-x: auto;"><!--table-hover -->
                 <thead>
-                    <tr id="header_table">
-                            <th ></th>
-                        <?php foreach ($chem_no as $row) { ?>
-                        
-                            <th ><?php echo $row['chem_name_th']; ?></th>
+                    <tr id="header_table" style="">
+                            <th style="width: 15%"></th>
+                        <?php foreach ($chem_no as $row) { ?>                        
+                            <th style="width: 15%"><?php echo $row['chem_name_th']; ?></th>
                             <?php } ?>
                     </tr>
                 </thead>
@@ -83,14 +82,12 @@
                 </tbody>
                 
             </table>
-            <div class="col-md-12 text-center">
-                <ul class="pagination pagination-lg pager" id="myPager"></ul>
-            </div>
+           
             <hr>
             <div class="form-group">
-                <img src="img/green.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.5 เมตร&nbsp;
-                <img src="img/yellow.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : วางห่างกันอย่างน้อย 0.3 เมตร&nbsp;
-                <img src="img/red.png" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : ห้ามวางใกล้กัน&nbsp;
+                <img src="img/<?php echo $chem_relation[0]["chem_relation_name"] ?>" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : <?php echo $chem_relation[0]["chem_relation_descr"] ?>&nbsp;
+                <img src="img/<?php echo $chem_relation[1]["chem_relation_name"] ?>" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : <?php echo $chem_relation[1]["chem_relation_descr"] ?>&nbsp;
+                <img src="img/<?php echo $chem_relation[2]["chem_relation_name"] ?>" width="15px" height="15px">&nbsp;&nbsp;&nbsp; : <?php echo $chem_relation[2]["chem_relation_descr"] ?>&nbsp;
             </div>
             <?php }?>
         </div>

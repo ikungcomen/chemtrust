@@ -35,8 +35,8 @@
         <script src="js/jquery-ui.min.js"></script> 
 
         <!-- Paging -->
-        <script src="<?php echo base_url(); ?>js/tablepagegin.js"></script>
-
+        <script src="js/tablepagegin.js"></script>
+        
         <!-- style table -->
         <link rel="stylesheet" href="css/style_table.css">
 
@@ -98,6 +98,8 @@
                                  <a class="btn btn-primary"><span class="glyphicon glyphicon-search fa-1x" aria-hidden="true"> ค้นหา</span></a>
                              </div>
                          </div>-->
+                        <br><br>
+                        <h4><a href="<?php echo base_url(); ?>index.php/main_cemee/main_controller/main_cemee"><span class="glyphicon glyphicon-backward fa-1x icon" aria-hidden="true">&nbsp;กลับหน้าหลัก</span></a></h4>
                     </td>
                 </tr>
             </table>
@@ -197,9 +199,11 @@
                     </ul>
 
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a ><span class="glyphicon glyphicon-book fa-1x"></span> คู่มือ</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> คู่มือการใช้งาน</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> กฎหมาย</a></li>
+                        <li class="active"><a  ><span class="glyphicon glyphicon-book fa-1x"></span> คู่มือ</a></li>
+                        <li><a href="file_web/user_manual.pdf" target="_blank"><span class="glyphicon glyphicon-chevron-right"></span> คู่มือการใช้งาน</a></li>
+                        <?php if($this->session->userdata('user_role') == "admin"){  ?>
+                        <li><a href="<?php echo base_url(); ?>index.php/main_law/main_law_controller/main_law"><span class="glyphicon glyphicon-chevron-right"></span> กฎหมาย</a></li>
+                        <?php }  ?>
                         <li><a href="<?php echo base_url(); ?>index.php/login/logout"><span class="glyphicon glyphicon-chevron-right"></span> ออกจากระบบ</a></li>
                     </ul>
 

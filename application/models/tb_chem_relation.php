@@ -18,7 +18,7 @@ class tb_chem_relation extends CI_Model{
         $result = $result->result_array();
         return $result;
     }
-    public function check_chemstore_relation($chem_type_1,$chem_type_2,$chem_relation) {
+    public function check_chemstore_relation($chem_type_1,$chem_type_2) {
         $sql = " select 1 from  tb_chem_store_relation where (chem_store_type_main = '$chem_type_1' and chem_store_type_relation = '$chem_type_2' )  ";
         $sql = $sql." or (chem_store_type_main = '$chem_type_2' and chem_store_type_relation = '$chem_type_1') limit 1 ";
         $result = $this->db->query($sql);
@@ -39,9 +39,9 @@ class tb_chem_relation extends CI_Model{
         $result = $result->result_array();
         return $result;
     }
-    public function delete_chem_store_relation($chem_store_type_1,$chem_store_type_2) {
-        $this->db->where('chem_store_type_main', $chem_store_type_1);
-        $this->db->where('chem_store_type_relation', $chem_store_type_2);
+    public function delete_chem_store_relation($chem_store_type_main,$chem_store_type_relation) {
+        $this->db->where('chem_store_type_main', $chem_store_type_main);
+        $this->db->where('chem_store_type_relation', $chem_store_type_relation);
         $this->db->delete('tb_chem_store_relation');
         if ($this->db->affected_rows() > 0) {
             return 1;
@@ -49,25 +49,35 @@ class tb_chem_relation extends CI_Model{
             return 0;
         }
     }
-    public function update_chemstore_relation($chem_store_type_1,$chem_store_type_2) {
-        /*$this->db->where('chem_store_type_main', $chem_store_type_1);
-        $this->db->where('chem_store_type_relation', $chem_store_type_2);
-        $this->db->delete('tb_chem_store_relation');
+    public function update_chemstore_relation($chem_store_type_main,$chem_store_type_relation,$chem_relation_code,$date,$user_id) {
+        $this->db->where('chem_store_type_main', $chem_store_type_main);
+        $this->db->where('chem_store_type_relation', $chem_store_type_relation);
+        $this->db->set('chem_relation_code',$chem_relation_code);
+        //$this->db->set('create_date', $date);
+        //$this->db->set('create_userid', $user_id);
+        $this->db->set('update_date', $date);
+        $this->db->set('update_userid', $user_id);
+        $this->db->update('tb_chem_store_relation');
         if ($this->db->affected_rows() > 0) {
             return 1;
         } else {
             return 0;
-        }*/
+        }
     }
-    public function insert_chemstore_relation($chem_store_type_1,$chem_store_type_2) {
-        /*$this->db->where('chem_store_type_main', $chem_store_type_1);
-        $this->db->where('chem_store_type_relation', $chem_store_type_2);
-        $this->db->delete('tb_chem_store_relation');
+    public function insert_chemstore_relation($chem_store_type_main,$chem_store_type_relation,$chem_relation_code,$date,$user_id) {
+        $this->db->set('chem_store_type_main', $chem_store_type_main);
+        $this->db->set('chem_store_type_relation', $chem_store_type_relation);
+        $this->db->set('chem_relation_code',$chem_relation_code);
+        $this->db->set('create_date', $date);
+        $this->db->set('create_userid', $user_id);
+        $this->db->set('update_date', $date);
+        $this->db->set('update_userid', $user_id);
+        $this->db->insert('tb_chem_store_relation');
         if ($this->db->affected_rows() > 0) {
             return 1;
         } else {
             return 0;
-        }*/
+        }
     }
    
 }

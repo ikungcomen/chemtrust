@@ -18,7 +18,7 @@
             <br>
             <div class="panel-body form-horizontal payment-form">
 
-                <form id="update_cemee" method="post" action="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/update_chem">
+                <form id="update_cemee" method="post" action="<?php echo base_url(); ?>index.php/search_cemee/searchCemee_controller/update_chem" enctype="multipart/form-data">
                     <fieldset>  
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">รหัสสารเคมี :</label>
@@ -97,8 +97,27 @@
                             </div>
                             <div class="col-sm-4">
 
-                            </div>
+                            </div>                             
                         </div>
+                            <div class="form-group">
+                          <label  class="col-sm-2 control-label">MSDS :</label>
+                         <div class="col-sm-4">
+                                 <a id="print_classify_btn" class="btn btn-primary" href="file_web/chem_desc/<?php echo $chem_info[0]['chem_msds_file']; ?>" target="_blank">
+                                    <span class="glyphicon glyphicon-print fa-1x" aria-hidden="true"> MSDS</span>
+                                  </a> <hr>
+                                <label><font color="red">*** นามสกุลไฟล์ xls,xlsx,pdf เท่านั้น</font></label>
+                                <input id="msds_f" name="msds_f" type="file" placeholder="MSDS " class="form-control"/>
+                         </div>
+                           <label  class="col-sm-2 control-label">ฉลากสารเคมี :</label>
+                          <div class="col-sm-4 text-left">
+                                 <a id="print_classify_btn" class="btn btn-primary" href="file_web/chem_desc/<?php echo $chem_info[0]['chem_msds_file']; ?>" target="_blank">
+                                    <span class="glyphicon glyphicon-print fa-1x" aria-hidden="true"> ฉลาก</span>
+                                  </a> <hr>
+                                <label><font color="red">*** นามสกุลไฟล์ xls,xlsx,pdf เท่านั้น</font></label>
+                                <input id="label_f" name="label_f" type="file" placeholder="ฉลากสารเคมี " class="form-control"/>
+                         </div>
+                        </div>
+                        
                         <div class="form-group text-right">
                             <div class="col-sm-12">
                                 <a class="btn btn-primary" id="update"><span class="glyphicon glyphicon-floppy-save fa-1x" aria-hidden="true"> บันทึกข้อมูล</span></a>
@@ -118,6 +137,8 @@
         $("#update").click(function () {
 
             var chem_no = $('#chem_no').val().trim();
+             var msds_f = $('#msds_f').val().trim();
+             var label_f = $('#label_f').val().trim();
             /*var chem_cas_number = $('#chem_cas_number').val().trim();
              var chem_seq = $('#chem_seq').val().trim();
              var chem_name_th = $('#chem_name_th').val().trim();
@@ -162,9 +183,33 @@
              } else if (chem_location == "") {
              $('#message').html('กรุณาระบุ สถานที่จัดเก็บ');
              $('#myModal').modal('show');
-             }*/ else {
-                $("#update_cemee").submit();
+             }*/
+            else {           
+                
+                var num = msds_f.split(".").length;
+                var pic_arr = msds_f.split(".");
+                var file_name = pic_arr[num-1];
+                if(msds_f !== "" && file_name != "xls" && file_name != "xlsx" && file_name != "pdf"){// 
+                    $('#message').html('กรุณาเลือกไฟล์MSDSนามสกุล xls หรือ xlsx หรือ pdf เท่านั้น');
+                    $('#myModal').modal('show');
+                }                
+                else{
+                    var num = label_f.split(".").length;
+                    var pic_arr = label_f.split(".");
+                    var file_name = pic_arr[num-1];
+                     if(label_f != "" && file_name != "xls" && file_name != "xlsx" && file_name != "pdf"){// 
+                    $('#message').html('กรุณาเลือกไฟล์ฉลากสารเคมีนามสกุล xls หรือ xlsx หรือ pdf เท่านั้น');
+                    $('#myModal').modal('show');
+                     } 
+                     else {
+                
+                          $("#update_cemee").submit();
+                     }
+                }                
+               
             }
+        
+           
         });
 
         /*

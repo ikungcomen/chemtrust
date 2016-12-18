@@ -170,7 +170,7 @@ $method=$model[0]['method'];
                                 <textarea class="form-control " type="text" id="chem_desc" name="chem_desc"    placeholder="คำอฺธิบายสำหรับแสดงและค้นหา" ><?php echo $chem_desc ?></textarea>
                             </div>                            
                         </div> 
-                       
+                       <hr>
                         <div class="form-group text-info">
                             <label  class="col-sm-3 control-label"><small>ผู้สร้าง :<?php echo $create_userid ?></small></label>
                             <label  class="col-sm-3 control-label"><small>วันที่สร้าง:<?php echo $create_date ?></small></label>
@@ -190,7 +190,7 @@ $method=$model[0]['method'];
 
 
 
-<?php// $this->load->view('modal.html'); ?>
+<?php $this->load->view('modal.html'); ?>
 <script type="text/javascript">
     $(document).ready(function() {
 

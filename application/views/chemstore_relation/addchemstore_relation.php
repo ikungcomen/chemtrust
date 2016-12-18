@@ -28,8 +28,8 @@
                 <form id="save_store_relation" method="post" action="<?php echo base_url(); ?>index.php/chremstorerelation_controller/chremstore_relation/add_chem_store_relation">
                     <fieldset>  
                         <div class="form-group">
-                            
-                            <div class="col-sm-5">
+                            <label  class="col-sm-3 control-label">การจัดเก็บ :</label>
+                            <div class="col-sm-4">
                                <select class="form-control request" id="chem_type_1" name="chem_type_1">
                                     <option value="">-------------- ประเภทสารเคมี --------------</option>
                                     <?php foreach ($chem_type as $row) { ?>
@@ -37,9 +37,8 @@
                                     <?php } ?>
                                 </select>
                             </div>
-                            <label  class="col-sm-2  text-center">วางชิดกับ</label>
-                            
-                            <div class="col-sm-5">
+                            <label  class="col-sm-1  text-center">กับ</label>                            
+                            <div class="col-sm-4">
                                <select class="form-control request" id="chem_type_2" name="chem_type_2">
                                     <option value="">-------------- ประเภทสารเคมี --------------</option>
                                     <?php foreach ($chem_type as $row) { ?>
